@@ -1,0 +1,49 @@
+:root {
+  --color-dasar: #ff99fc;
+  --color-dasar2: #ff66fa;
+  --color-dasar3: #ff66fa;
+}
+.containerLoaders {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  z-index: 100;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: var(--color-dasar) transparent var(--color-dasar2) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+.containerError {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.textError {
+  font-size: 20px;
+  font-weight: 500;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

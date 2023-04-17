@@ -1,0 +1,555 @@
+.activeColor {
+  color: #8f44fd;
+}
+body {
+  overflow-x: hidden;
+  background-color: #f8f8f8;
+}
+.navBar {
+  background-color: #f8f8f8;
+
+  width: 100%;
+  display: flex;
+  padding-top: 43px;
+  padding-left: 37px;
+  padding-bottom: 39px;
+  padding-right: 29px;
+  position: fixed;
+  z-index: 9999999;
+  box-shadow: 0px 0px 10px 3px rgba(120, 122, 145, 0.3);
+}
+.ShowHub {
+  width: 15%;
+}
+.textShowHub {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.ShowHub > .textShowHub p {
+  text-decoration: none;
+  font-size: 21px;
+  font-weight: 700;
+}
+.textShowHub p:hover {
+  cursor: pointer;
+}
+.attr {
+  width: 38%;
+}
+.list {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.movies > p,
+.series > p,
+.contact > p,
+.AboutUs > p {
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.movies > p:hover,
+.series > p:hover,
+.contact > p:hover,
+.AboutUs > p:hover {
+  cursor: pointer;
+}
+.search {
+  width: 27%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.kotakSearch {
+  width: 89%;
+  height: 37px;
+  background-color: #ffccfd;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+.input {
+  width: 90%;
+  height: 100%;
+}
+.input > input {
+  padding: 10px;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.input > input::placeholder {
+  color: #ffffff;
+}
+.iconSearch {
+  width: 9%;
+}
+.iconSearch:hover {
+  cursor: pointer;
+}
+.iconSearch img {
+  width: 14px;
+  height: 14px;
+}
+.Auth {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Login {
+  /* display: flex; */
+  display: none;
+  position: relative;
+}
+.signIn > p,
+.signUp > p {
+  color: black;
+  font-size: 20px;
+}
+.thisSignUp {
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 10px;
+}
+.outss {
+  border: none;
+  padding: 0;
+}
+.myProfil {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.myProfil:hover {
+  cursor: pointer;
+}
+.fotoPP {
+  width: 20px;
+  height: 20px;
+}
+.thisSignInLogin {
+  color: #4f4f4f;
+  font-size: 19px;
+}
+.Logout {
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  position: absolute;
+  top: 50px;
+  background-color: #f8f8f8;
+  box-shadow: -10px 10px 25px 3px rgba(120, 122, 145, 0.3);
+  border-radius: 15px;
+  width: 100%;
+  padding: 6px;
+  transition: all 1s ease;
+}
+.signIn > p:hover,
+.signUp > p:hover {
+  cursor: pointer;
+}
+.burgerNav {
+  width: 20px;
+  height: 20px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  align-self: center;
+  z-index: 111;
+  transition: all 0.2s ease;
+}
+.burgerNav:hover {
+  cursor: pointer;
+}
+.span {
+  background-color: black;
+  width: 20px;
+  height: 3px;
+  border-radius: 9px;
+}
+.listBurgerNav {
+  transform: translateY(-500px);
+  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: #ff66fa;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+.thisList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: space-around;
+}
+.Listmovies > p,
+.Listseries > p,
+.Listcontact > p,
+.ListAboutUs > p {
+  font-weight: 400;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.Listmovies > p:hover,
+.Listseries > p:hover,
+.Listcontact > p:hover,
+.ListAboutUs > p :hover {
+  cursor: pointer;
+}
+.ListsignIn > p,
+.ListsignUp > p {
+  font-size: 20px;
+  color: black;
+  font-weight: 400;
+}
+.NotLogged {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.Logged {
+  width: 100%;
+  height: 30%;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ListsignIn {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.ListsignUp {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.ListsignUp > p {
+  border: none;
+}
+.ListsignIn > p:hover,
+.ListsignUp > p:hover {
+  cursor: pointer;
+}
+.thisSignInLogin:hover {
+  cursor: text !important;
+}
+.active {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+.activeList {
+  transform: translateY(0px);
+  transition: all 0.3s ease;
+}
+.header {
+  width: 100%;
+  position: relative;
+  position: absolute;
+  top: 141px;
+  right: -60px;
+  box-sizing: border-box;
+}
+.backgroundheader {
+  width: 93%;
+  height: 700px;
+  background: linear-gradient(
+    135deg,
+    #ca26ff 7.17%,
+    #f4cac0 85.48%,
+    #fff3b0 100%
+  );
+  border-radius: 20px 20px 300px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.TextHeader {
+  width: 65%;
+  height: 100%;
+  padding: 20px;
+}
+.text1,
+.text2 {
+  width: 100%;
+  height: 20%;
+  position: relative;
+}
+.article {
+  width: 80%;
+  height: 40%;
+  position: relative;
+}
+.article > p {
+  position: absolute;
+  font-weight: 700;
+  font-size: 20px;
+  left: 80px;
+  letter-spacing: 0.015em;
+  line-height: 149.5%;
+  color: white;
+}
+.text1 > h1 {
+  position: absolute;
+  font-weight: 700;
+  left: 65px;
+  top: 54px;
+  font-size: 60px;
+}
+.text2 > h2 {
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  left: 55px;
+  color: white;
+  font-size: 40px;
+  letter-spacing: 0.395em;
+}
+.buttonheader {
+  width: 85%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+.ButtonStart {
+  width: 200px;
+  height: 63px;
+  color: white;
+  background-color: black;
+  border-radius: 35px;
+}
+.ButtonStart:hover {
+  cursor: pointer;
+}
+.ButtonStart > p {
+  font-size: 22px;
+  letter-spacing: 0.015em;
+  color: #ffccfd;
+  font-weight: 700;
+}
+.ImageHeader {
+  width: 40%;
+  position: relative;
+}
+.thisImage {
+  width: 100%;
+  position: absolute;
+  right: -50px;
+  bottom: 10px;
+  animation-name: animasi;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  z-index: 111;
+}
+.thisImage > img {
+  width: 552px;
+  height: 532px;
+}
+@media screen and (max-width: 1350px) {
+  .thisImage {
+    right: 70px;
+  }
+  .thisImage > img {
+    width: 442px;
+    height: 422px;
+  }
+}
+@media screen and (max-width: 1210px) {
+  .movies > p,
+  .series > p,
+  .contact > p,
+  .AboutUs > p {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .signIn > p,
+  .signUp > p {
+    font-size: 15px;
+  }
+
+  .header {
+    right: -30px;
+  }
+  .backgroundheader {
+    flex-direction: column-reverse;
+    border-radius: 20px 20px 20px 20px;
+  }
+  .ImageHeader {
+    height: 50%;
+    width: 100%;
+  }
+  .thisImage {
+    height: 100%;
+    position: relative;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thisImage > img {
+    width: 302px;
+    height: 302px;
+  }
+  .TextHeader {
+    height: 50%;
+    width: 100%;
+  }
+  .article {
+    display: none;
+  }
+  .text1 > h1 {
+    position: relative;
+    font-weight: 700;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+  .text2 > h2 {
+    position: relative;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+  }
+  .text2 {
+    margin-bottom: 20px;
+  }
+  .buttonheader {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 940px) {
+  .movies > p,
+  .series > p,
+  .contact > p,
+  .AboutUs > p {
+    font-size: 13px;
+  }
+  .Login > .signIn > p,
+  .Login > .signUp > p {
+    font-size: 14px !important;
+  }
+}
+@media screen and (max-width: 924px) {
+  .attr,
+  .Auth {
+    display: none;
+  }
+
+  .navBar {
+    justify-content: space-between;
+  }
+  .ShowHub {
+    width: 10%;
+  }
+  .search {
+    width: 50%;
+    justify-content: center;
+  }
+  .burgerNav {
+    display: flex;
+  }
+}
+@media screen and (max-width: 624px) {
+  .header {
+    right: -20px;
+  }
+  .backgroundheader {
+    height: 500px;
+  }
+  .thisImage > img {
+    width: 232px;
+    height: 232px;
+  }
+  .text1 > h1 {
+    font-size: 40px;
+  }
+  .text2 > h2 {
+    font-size: 29px;
+  }
+  .ButtonStart {
+    width: 120px;
+    height: 43px;
+  }
+  .ButtonStart > p {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 524px) {
+  .navBar {
+    padding-left: 19px;
+  }
+  .ShowHub {
+    width: 90%;
+    position: absolute;
+    top: 10px;
+  }
+  .textShowHub {
+    justify-content: center;
+  }
+  .ShowHub > .textShowHub p {
+    font-size: 20px;
+  }
+  .search {
+    width: 90%;
+  }
+  .kotakSearch {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 454px) {
+  .header {
+    right: -13px;
+  }
+  .text1 > h1 {
+    font-size: 34px;
+  }
+  .text2 > h2 {
+    font-size: 20px;
+  }
+}
+@keyframes animasi {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
