@@ -1,44 +1,130 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useDispatch, useSelector } from "react-redux";
+import { GetTV } from "../../../../../Action/ListTvShow";
+import ImgError from "../../../../img/Error-Tv.png";
+import { useQuery } from "react-query";
+import axios from "axios";
+
 function Main2() {
+  const {
+    data: data2,
+    isLoading,
+    isError,
+  } = useQuery(["dataFilm2"], async () => {
+    return await axios.get(
+      "https:api.themoviedb.org/3/discover/tv?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US&page=1"
+    );
+  });
+
+  const { GetTvs } = useSelector((state) => state.TvShowReducer);
+  const [page, setPage] = useState(4);
+  const dispatch = useDispatch();
+  let myTv = data2?.data.results;
+  useEffect(() => {
+    if (!GetTvs && !isLoading) {
+      dispatch(GetTV(myTv));
+    }
+  }, [dispatch, GetTvs, isLoading]);
+
+  useEffect(() => {
+    if (innerWidth < 850 && innerWidth > 600) {
+      setPage(3);
+    } else if (innerWidth < 600 && innerWidth > 430) {
+      setPage(2);
+    } else if (innerWidth < 430) {
+      setPage(1);
+    }
+  });
   return (
     <main className="main2">
       <div className="textTopIn2023 Tv">
         <p>Tv Show</p>
       </div>
       <div className="listFilm">
-        <Swiper
-          navigation={true}
-          slidesPerView={3}
-          modules={[Navigation, Pagination]}
-          pagination={{ clickable: true }}
-          className="mySwiper thisFilm TvShow"
-        >
-          <SwiperSlide>
-            <div className="Film2">
-              <div className="imgFilm2">
-                <img src="" alt="" />
-              </div>
-              <div className="rating">
-                <div className="Angkarating">
-                  <p>8.9</p>
+        {GetTvs && !isLoading ? (
+          <Swiper
+            navigation={true}
+            slidesPerView={page}
+            modules={[Navigation, Pagination]}
+            pagination={{ clickable: true }}
+            className="mySwiper thisFilm TvShow"
+          >
+            {GetTvs.map((myTv) => {
+              let vote = myTv.vote_average.toLocaleString().split(".").join("");
+
+              return (
+                <SwiperSlide key={myTv.id}>
+                  <div className="Film2">
+                    <div className="imgFilm2">
+                      <img
+                        src={`https://image.tmdb.org/t/p/original/${
+                          myTv.poster_path
+                            ? myTv.poster_path
+                            : myTv.backdrop_path
+                        }`}
+                        alt=""
+                      />
+                    </div>
+                    <div className="rating">
+                      <div className="Angkarating">
+                        <p>{myTv.vote_average}</p>
+                      </div>
+                      <div className="panjangRating">
+                        <div
+                          className="thisSize"
+                          style={{ width: `${vote}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="nameFilm2">
+                      <p>{myTv.name}</p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        ) : isLoading && !isError ? (
+          <div className="containerLoaders">
+            <div className="lds-dual-ring"></div>
+          </div>
+        ) : (
+          isError && (
+            <>
+              <div className="containerError">
+                <div className="imgError">
+                  <img src={ImgError} alt="" />
                 </div>
-                <div className="panjangRating">
-                  <div className="thisSize"></div>
+                <div className="textError">
+                  <p>data tidak ada</p>
                 </div>
               </div>
-              <div className="nameFilm2">
-                <p></p>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+            </>
+          )
+        )}
       </div>
     </main>
   );
 }
 
 export default Main2;
+// <div className="Film2">
+//           <div className="imgFilm2">
+//             <img src="" alt="" />
+//           </div>
+//           <div className="rating">
+//             <div className="Angkarating">
+//               <p>8.9</p>
+//             </div>
+//             <div className="panjangRating">
+//               <div className="thisSize"></div>
+//             </div>
+//           </div>
+//           <div className="nameFilm2">
+//             <p></p>
+//           </div>
+//         </div>

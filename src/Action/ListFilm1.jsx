@@ -1,6 +1,4 @@
-import { useQuery } from "react-query";
 import { GET } from "../reducers/Recomended/Recomended";
-import axios from "axios";
 
 export const GetFilms = (Films) => {
   return (dispatch) => {

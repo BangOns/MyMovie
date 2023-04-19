@@ -19,15 +19,12 @@ function Main1() {
   );
 
   const { GetFilm } = useSelector((state) => state.RecomendedReducer);
-  const [Films, setFilms] = useState([]);
   const [page, setPage] = useState(4);
   const dispatch = useDispatch();
   let myFilms = data?.data.results;
   useEffect(() => {
     if (!GetFilm && !isLoading) {
       dispatch(GetFilms(myFilms));
-    } else {
-      setFilms(GetFilm);
     }
   }, [dispatch, GetFilm, isLoading]);
 
