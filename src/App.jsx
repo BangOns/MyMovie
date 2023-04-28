@@ -3,13 +3,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./Components/html/Navbar";
 import Body from "./Components/html/bodyAndFooter/body";
 import MainDetails from "./Components/html/bodyAndFooter/componentsBody/ListFilm/Details/mainDetails";
 import MainRecomendedDetails from "./Components/html/bodyAndFooter/componentsBody/ListFilm/Details/mainRecomendedDetails";
 import MainTvShowDetails from "./Components/html/bodyAndFooter/componentsBody/ListFilm/Details/MainTvShowDetails";
 import MainPopularDetails from "./Components/html/bodyAndFooter/componentsBody/ListFilm/Details/MainPopularDetails";
 import MainDetailsTv from "./Components/html/bodyAndFooter/componentsBody/ListFilm/Details/mainDetailsTv";
+import Navbar from "./Components/html/ComponentsNavBar/Navbar";
+import SignUp from "./Components/html/ComponentsNavBar/SignUp";
+import SignIn from "./Components/html/ComponentsNavBar/SignIn";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="RecomendedFilms" element={<MainRecomendedDetails />} />
         <Route path="TvShowFilms" element={<MainTvShowDetails />} />
         <Route path="PopularFilms" element={<MainPopularDetails />} />
+        <Route path="Register" element={<SignUp />} />
+        <Route path="Login" element={<SignIn />} />
       </Routes>
     </div>
   );

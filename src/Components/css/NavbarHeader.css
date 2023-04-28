@@ -106,8 +106,7 @@ body {
   align-items: center;
 }
 .Login {
-  /* display: flex; */
-  display: none;
+  display: flex;
   position: relative;
 }
 .signIn > p,
@@ -141,8 +140,8 @@ body {
   color: #4f4f4f;
   font-size: 19px;
 }
+
 .Logout {
-  /* display: flex; */
   display: none;
   justify-content: center;
   position: absolute;
@@ -234,7 +233,7 @@ body {
 .Logged {
   width: 100%;
   height: 30%;
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -532,6 +531,9 @@ body {
   }
 }
 @media screen and (max-width: 454px) {
+  .navBar {
+    padding-bottom: 20px;
+  }
   .header {
     right: -13px;
   }

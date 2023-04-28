@@ -1,0 +1,380 @@
+.container {
+  &SignUp,
+  &SignIn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 115px;
+  }
+}
+
+.text {
+  &SignUp,
+  &SignIn {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}
+
+.text {
+  &1Signup,
+  &1SignIn {
+    font-weight: 700;
+    font-size: 30px;
+  }
+  &2Signup,
+  &2SignIn {
+    font-weight: 400;
+    font-size: 20px;
+  }
+}
+
+.KotakRegister {
+  width: 100%;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+}
+.IsiRegister {
+  border-radius: 15px;
+  width: 70%;
+  background-color: #330031;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.input {
+  &Username,
+  &Password,
+  &ConfirmPassword,
+  &Email,
+  &Number {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &EmailSignIn,
+  &PasswordSignIn {
+    width: 100%;
+    height: 29%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.label {
+  &Name,
+  &Password,
+  &ConfirmPassword,
+  &Email,
+  &Number {
+    width: 78%;
+    height: 20%;
+    label {
+      color: white;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+  &EmailSignIn,
+  &PasswordSignIn {
+    width: 78%;
+    height: 30%;
+    label {
+      color: white;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+}
+
+.userInput {
+  &Username,
+  &Password,
+  &ConfirmPassword,
+  &Email,
+  &Number {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    input {
+      width: 80%;
+      height: 40px;
+      outline: none;
+      background-color: none;
+      border-radius: 20px;
+      font-size: 15px;
+      padding: 10px;
+      background-color: #d9d9d9;
+    }
+  }
+  &PasswordSignIn,
+  &EmailSignIn {
+    width: 80%;
+    height: 35%;
+    input {
+      width: 90%;
+      height: 40px;
+      outline: none;
+      background-color: none;
+      border-radius: 20px;
+      font-size: 15px;
+      padding: 10px;
+      background-color: #d9d9d9;
+    }
+  }
+}
+
+.alreadySignIn {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  &2 {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.buttonAlready {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button {
+    width: 130px;
+    height: 38px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 17px;
+    background: #d9d9d9;
+  }
+  &2 {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    button {
+      width: 130px;
+      height: 38px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 17px;
+      background: #d9d9d9;
+    }
+  }
+}
+button:hover {
+  cursor: pointer;
+}
+.accountReady {
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  p {
+    span {
+      color: #706dff;
+      text-decoration: none;
+    }
+  }
+}
+
+.readySignIn:hover {
+  cursor: pointer;
+}
+.KotakSignIn {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+}
+.IsiSignIn {
+  border-radius: 15px;
+  width: 60%;
+  background-color: #330031;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 924px) {
+  .label {
+    &Name,
+    &Password,
+    &ConfirmPassword,
+    &Email,
+    &Number {
+      width: 70%;
+      label {
+        font-size: 18px;
+      }
+    }
+    &EmailSignIn,
+    &PasswordSignIn {
+      label {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .userInput {
+    &Username,
+    &Password,
+    &ConfirmPassword,
+    &Email,
+    &Number {
+      input {
+        width: 75%;
+        height: 35px;
+        font-size: 14px;
+      }
+    }
+    &PasswordSignIn,
+    &EmailSignIn {
+      input {
+        width: 75%;
+        height: 35px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .buttonAlready {
+    button {
+      width: 125px;
+      height: 35px;
+      font-size: 15px;
+    }
+    &2 {
+      button {
+        width: 125px;
+        height: 35px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .accountReady {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .text {
+    &SignUp {
+      margin-bottom: 0px;
+      height: 120px;
+    }
+    &1Signup {
+      font-weight: 700;
+      font-size: 22px;
+    }
+    &2Signup {
+      font-weight: 400;
+      font-size: 16px;
+    }
+    &1SignIn {
+      font-weight: 700;
+      font-size: 22px;
+    }
+    &2SignIn {
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+
+  .Isi {
+    &Register {
+      display: block;
+    }
+    &SignIn {
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  .input {
+    &Username,
+    &Password,
+    &ConfirmPassword,
+    &Email,
+    &Number {
+      height: 16.6%;
+      justify-content: space-evenly;
+    }
+  }
+  .alreadySignIn {
+    height: 15%;
+  }
+  .label {
+    &Name,
+    &Password,
+    &ConfirmPassword,
+    &Email,
+    &Number {
+      label {
+        font-size: 15px;
+      }
+    }
+    &EmailSignIn,
+    &PasswordSignIn {
+      label {
+        font-size: 18px;
+      }
+    }
+  }
+  .KotakRegister {
+    padding-bottom: 10px;
+  }
+  .userInput {
+    &Username,
+    &Password,
+    &ConfirmPassword,
+    &Email,
+    &Number {
+      input {
+        width: 73%;
+        height: 30px;
+        font-size: 14px;
+      }
+    }
+    &PasswordSignIn,
+    &EmailSignIn {
+      input {
+        width: 90%;
+        height: 35px;
+        font-size: 14px;
+      }
+    }
+  }
+  .buttonAlready {
+    button {
+      width: 115px;
+      height: 30px;
+      font-size: 12px;
+    }
+    &2 {
+      button {
+        width: 115px;
+        height: 35px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .accountReady {
+    font-size: 13px;
+  }
+}
