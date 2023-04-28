@@ -3,6 +3,12 @@
   --color-dasar2: #ff66fa;
   --color-dasar3: #ff66fa;
 }
+.thisContaner,
+.thisContainerError {
+  width: 100%;
+  position: absolute;
+  top: 250px;
+}
 .containerLoaders {
   width: 100%;
   height: 100%;
@@ -27,6 +33,7 @@
   border-color: var(--color-dasar) transparent var(--color-dasar2) transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
 .containerError {
   width: 100%;
   height: 100%;

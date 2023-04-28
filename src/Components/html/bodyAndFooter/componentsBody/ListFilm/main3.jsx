@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import { GetPopular } from "../../../../../Action/ListPopular";
 import axios from "axios";
 import ImgError from "../../../../img/Error-Tv.png";
+import { useNavigate } from "react-router";
 
 function Main3() {
   const {
@@ -19,7 +20,7 @@ function Main3() {
       "https://api.themoviedb.org/3/trending/movie/week?api_key=df3bdd5a174cac305c5d71d51733fff7&page=1"
     );
   });
-
+  const navigate = useNavigate();
   const { GetPops } = useSelector((state) => state.PopularReducer);
   const [page, setPage] = useState(4);
   const dispatch = useDispatch();
@@ -63,7 +64,10 @@ function Main3() {
               return (
                 <SwiperSlide key={myFilmPop.id}>
                   <div className="Film3">
-                    <div className="imgFilm3">
+                    <div
+                      className="imgFilm3"
+                      onClick={() => navigate(`detailsFilms/${myFilmPop.id}`)}
+                    >
                       <img
                         src={`https://image.tmdb.org/t/p/original/${
                           myFilmPop.poster_path

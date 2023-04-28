@@ -8,6 +8,7 @@ import { GetTV } from "../../../../../Action/ListTvShow";
 import ImgError from "../../../../img/Error-Tv.png";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function Main2() {
   const {
@@ -19,7 +20,7 @@ function Main2() {
       "https:api.themoviedb.org/3/discover/tv?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US&page=1"
     );
   });
-
+  const navigate = useNavigate();
   const { GetTvs } = useSelector((state) => state.TvShowReducer);
   const [page, setPage] = useState(4);
   const dispatch = useDispatch();
@@ -59,7 +60,10 @@ function Main2() {
               return (
                 <SwiperSlide key={myTv.id}>
                   <div className="Film2">
-                    <div className="imgFilm2">
+                    <div
+                      className="imgFilm2"
+                      onClick={() => navigate(`detailsFilmsTv/${myTv.id}`)}
+                    >
                       <img
                         src={`https://image.tmdb.org/t/p/original/${
                           myTv.poster_path
@@ -112,19 +116,3 @@ function Main2() {
 }
 
 export default Main2;
-// <div className="Film2">
-//           <div className="imgFilm2">
-//             <img src="" alt="" />
-//           </div>
-//           <div className="rating">
-//             <div className="Angkarating">
-//               <p>8.9</p>
-//             </div>
-//             <div className="panjangRating">
-//               <div className="thisSize"></div>
-//             </div>
-//           </div>
-//           <div className="nameFilm2">
-//             <p></p>
-//           </div>
-//         </div>

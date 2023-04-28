@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { BrowserRouter } from "react-router-dom";
 const store = createStore(
   reducer,
   compose(
@@ -18,11 +19,13 @@ const store = createStore(
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );

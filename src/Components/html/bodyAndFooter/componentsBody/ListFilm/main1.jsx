@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { GetFilms } from "../../../../../Action/ListFilm1";
 import ImgError from "../../../../img/Error-Tv.png";
+import { useNavigate } from "react-router";
 function Main1() {
   const { data, isLoading, isError, error, isSuccess } = useQuery(
     ["dataFilm1"],
@@ -21,6 +22,7 @@ function Main1() {
   const { GetFilm } = useSelector((state) => state.RecomendedReducer);
   const [page, setPage] = useState(4);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let myFilms = data?.data.results;
   useEffect(() => {
     if (!GetFilm && !isLoading) {
@@ -60,7 +62,10 @@ function Main1() {
               return (
                 <SwiperSlide key={films.id}>
                   <div className="Film">
-                    <div className="imgFilm">
+                    <div
+                      className="imgFilm"
+                      onClick={() => navigate(`detailsFilms/${films.id}`)}
+                    >
                       <img
                         src={`https://image.tmdb.org/t/p/original/${films.poster_path}`}
                         alt=""

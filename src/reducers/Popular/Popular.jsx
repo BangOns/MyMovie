@@ -1,6 +1,4 @@
-export const ADDPOP = "ADDPOP";
 export const GETPOP = "GETPOP";
-export const REMOVEPOP = "REMOVEPOP";
 
 let InitialStatePop = {
   GetPops: false,

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetIndonesia } from "../../../../../Action/ListIndonesia";
 import ImgError from "../../../../img/Error-Tv.png";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function Main4() {
   const {
@@ -30,6 +31,7 @@ function Main4() {
       },
     }
   );
+  const navigate = useNavigate();
   const { GetIndos } = useSelector((state) => state.IndonesiaReducer);
   const [page, setPage] = useState(4);
   const dispatch = useDispatch();
@@ -69,18 +71,20 @@ function Main4() {
                 .split(".")
                 .join("")
                 .slice(0, 2);
-
               return (
                 <SwiperSlide key={myFilmIndo.id}>
                   <div className="Film4">
-                    <div className="imgFilm4">
+                    <div
+                      className="imgFilm4"
+                      onClick={() => navigate(`detailsFilms/${myFilmIndo.id}`)}
+                    >
                       <img
                         src={`https://image.tmdb.org/t/p/original/${
                           myFilmIndo.poster_path
                             ? myFilmIndo.poster_path
                             : myFilmIndo.backdrop_path
                         }`}
-                        alt=""
+                        alt={`Image ${myFilmIndo.original_title}`}
                       />
                     </div>
                     <div className="rating">

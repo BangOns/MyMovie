@@ -1,21 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/NavbarHeader.css";
 import ImgSearch from "../img/search.png";
 import ImgProfil from "../img/profil.png";
 import ImgDoor from "../img/door.png";
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <nav className="navBar">
       <div className="ShowHub">
         <div className="textShowHub">
-          <p className="myMovie">MyMovie</p>
+          <p className="myMovie" onClick={() => navigate("/")}>
+            MyMovie
+          </p>
         </div>
       </div>
       <div className="attr">
         <div className="list">
           <div className="movies">
-            <p>Recomended</p>
+            <p onClick={()=>navigate('/RecomendedFilms')}>Recomended</p>
           </div>
           <div className="series">
             <p>TV Show</p>

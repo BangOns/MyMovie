@@ -1,6 +1,4 @@
-export const ADDTV = "ADDTV";
 export const GETTV = "GETTV";
-export const REMOVETV = "REMOVETV";
 
 let InitialStateTv = {
   GetTvs: false,

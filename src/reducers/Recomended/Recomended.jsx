@@ -1,6 +1,4 @@
-export const ADD = "ADD";
 export const GET = "GET";
-export const REMOVE = "REMOVE";
 
 let InitialState = {
   GetFilm: false,
