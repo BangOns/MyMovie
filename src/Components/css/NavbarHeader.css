@@ -332,6 +332,11 @@ body {
   padding: 2px;
   text-align: center;
 }
+.Listmovies-Listlabel > p:hover,
+.Listseries-Listlabel > p:hover,
+.Listcontact-Listlabel > p:hover {
+  cursor: pointer;
+}
 .ListsignIn > p,
 .ListsignUp > p {
   font-size: 20px;

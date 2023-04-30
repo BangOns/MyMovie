@@ -121,7 +121,15 @@ function Navbar() {
                     <div className="label-listDisplay" key={index}>
                       <p
                         onClick={() => {
-                          navigate(`RecomendedFilms/${listGenreTV.id[index]}`);
+                          document.querySelector(
+                            ".movies-listDisplay"
+                          ).style.display = "none";
+                          document.querySelector(
+                            ".movies-arrow img"
+                          ).className = "img-arrow";
+                          navigate(
+                            `RecomendedFilms/${listGenreFilms.id[index]}`
+                          );
                         }}
                       >
                         {nameFilms}
@@ -148,9 +156,13 @@ function Navbar() {
                     <div className="label-listDisplay" key={index}>
                       <p
                         onClick={() => {
-                          navigate(
-                            `RecomendedFilms/${listGenreFilms.id[index]}`
-                          );
+                          document.querySelector(
+                            ".series-listDisplay"
+                          ).style.display = "none";
+                          document.querySelector(
+                            ".series-arrow img"
+                          ).className = "img-arrow";
+                          navigate(`TvShowFilms/${listGenreTV.id[index]}`);
                         }}
                       >
                         {nameFilms}
@@ -177,9 +189,13 @@ function Navbar() {
                     <div className="label-listDisplay" key={index}>
                       <p
                         onClick={() => {
-                          navigate(
-                            `RecomendedFilms/${listGenreFilms.id[index]}`
-                          );
+                          document.querySelector(
+                            ".contact-listDisplay"
+                          ).style.display = "none";
+                          document.querySelector(
+                            ".contact-arrow img"
+                          ).className = "img-arrow";
+                          navigate(`PopularFilms/${listGenreFilms.id[index]}`);
                         }}
                       >
                         {nameFilms}
@@ -269,7 +285,27 @@ function Navbar() {
                 {listGenreFilms.name.map((resFIlm, index) => {
                   return (
                     <div className="Listmovies-Listlabel" key={index}>
-                      <p>{resFIlm}</p>
+                      <p
+                        onClick={() => {
+                          document
+                            .querySelector(".listBurgerNav")
+                            .classList.remove("activeList");
+                          document.querySelector(
+                            ".Listmovies-ListDisplay"
+                          ).className = "Listmovies-ListDisplay";
+                          document.querySelector(
+                            ".Listmovies-ListDisplay"
+                          ).style.display = "none";
+                          document.querySelector(
+                            ".Listmovies-arrow img"
+                          ).className = "img-arrow";
+                          navigate(
+                            `RecomendedFilms/${listGenreFilms.id[index]}`
+                          );
+                        }}
+                      >
+                        {resFIlm}
+                      </p>
                     </div>
                   );
                 })}
@@ -287,10 +323,28 @@ function Navbar() {
             </div>
             <div className="Listseries-ListDisplay">
               <div className="Listseries-kotakDisplay">
-                {listGenreFilms.name.map((resFIlm, index) => {
+                {listGenreTV.name.map((resFIlm, index) => {
                   return (
                     <div className="Listseries-Listlabel" key={index}>
-                      <p>{resFIlm}</p>
+                      <p
+                        onClick={() => {
+                          document
+                            .querySelector(".listBurgerNav")
+                            .classList.remove("activeList");
+                          document.querySelector(
+                            ".Listseries-ListDisplay"
+                          ).className = "Listseries-ListDisplay";
+                          document.querySelector(
+                            ".Listseries-ListDisplay"
+                          ).style.display = "none";
+                          document.querySelector(
+                            ".Listseries-arrow img"
+                          ).className = "img-arrow";
+                          navigate(`TvShowFilms/${listGenreTV.id[index]}`);
+                        }}
+                      >
+                        {resFIlm}
+                      </p>
                     </div>
                   );
                 })}
@@ -311,7 +365,25 @@ function Navbar() {
                 {listGenreFilms.name.map((resFIlm, index) => {
                   return (
                     <div className="Listcontact-Listlabel" key={index}>
-                      <p>{resFIlm}</p>
+                      <p
+                        onClick={() => {
+                          document
+                            .querySelector(".listBurgerNav")
+                            .classList.remove("activeList");
+                          document.querySelector(
+                            ".Listcontact-ListDisplay"
+                          ).className = "Listcontact-ListDisplay";
+                          document.querySelector(
+                            ".Listcontact-ListDisplay"
+                          ).style.display = "none";
+                          document.querySelector(
+                            ".Listcontact-arrow img"
+                          ).className = "img-arrow";
+                          navigate(`PopularFilms/${listGenreFilms.id[index]}`);
+                        }}
+                      >
+                        {resFIlm}
+                      </p>
                     </div>
                   );
                 })}

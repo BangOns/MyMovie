@@ -22,8 +22,8 @@ function App() {
         <Route path="detailsFilms/:id" element={<MainDetails />} />
         <Route path="detailsFilmsTv/:id" element={<MainDetailsTv />} />
         <Route path="RecomendedFilms/:id" element={<MainRecomendedDetails />} />
-        <Route path="TvShowFilms" element={<MainTvShowDetails />} />
-        <Route path="PopularFilms" element={<MainPopularDetails />} />
+        <Route path="TvShowFilms/:id" element={<MainTvShowDetails />} />
+        <Route path="PopularFilms/:id" element={<MainPopularDetails />} />
         <Route path="Register" element={<SignUp />} />
         <Route path="Login" element={<SignIn />} />
       </Routes>
