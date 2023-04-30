@@ -36,29 +36,90 @@ body {
   cursor: pointer;
 }
 .attr {
-  width: 38%;
+  width: 50%;
 }
 .list {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
-.movies > p,
-.series > p,
-.contact > p,
-.AboutUs > p {
+.movies,
+.series,
+.contact,
+.AboutUs {
+  width: 23%;
+  position: relative;
+}
+.movies-display,
+.series-display,
+.contact-display {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.movies-label > p,
+.series-label > p,
+.contact-label > p,
+.wishlist-label > p {
   font-weight: 400;
   text-decoration: none;
   color: black;
-  font-size: 20px;
+  font-size: 18px;
 }
-.movies > p:hover,
-.series > p:hover,
-.contact > p:hover,
-.AboutUs > p:hover {
+.movies-display:hover,
+.series-display:hover,
+.contact-display:hover,
+.AboutUs:hover {
   cursor: pointer;
+}
+.active-arrow {
+  transform: rotate(180deg);
+  transition: all 0.5s ease;
+}
+.movies-arrow,
+.series-arrow,
+.contact-arrow {
+  display: flex;
+  height: 100%;
+  width: 40%;
+  justify-content: center;
+}
+.movies-arrow > img,
+.series-arrow > img,
+.contact-arrow > img,
+.Listmovies-arrow > img {
+  transition: all 0.5s ease;
+}
+.active-listDisplay {
+  display: block;
+}
+.movies-listDisplay,
+.series-listDisplay,
+.contact-listDisplay {
+  width: 100%;
+  position: absolute;
+  display: none;
+  background-color: #f5f5f5;
+}
+.movies-kotakDisplay {
+  width: 100%;
+  box-shadow: 1px 3px 5px 1px rgba(172, 172, 172, 0.5);
+  border-radius: 3px;
+}
+.label-listDisplay > p {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px;
+}
+.label-listDisplay > p:hover {
+  cursor: pointer;
+}
+.label-listDisplay:hover {
+  background-color: #e0e0e0;
 }
 .search {
   width: 27%;
@@ -191,6 +252,10 @@ body {
   padding: 20px;
   transition: all 0.3s ease;
 }
+.activeList {
+  transform: translateY(0px);
+  transition: all 0.3s ease;
+}
 .thisList {
   width: 100%;
   height: 100%;
@@ -200,21 +265,72 @@ body {
 
   justify-content: space-around;
 }
-.Listmovies > p,
-.Listseries > p,
-.Listcontact > p,
+.Listmovies {
+  width: 27%;
+}
+.Listseries,
+.Listcontact {
+  width: 20%;
+}
+.Listmovies-display,
+.Listseries-display,
+.Listcontact-display {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 17687611;
+}
+.Listmovies-label > p,
+.Listseries-label > p,
+.Listcontact-label > p,
 .ListAboutUs > p {
   font-weight: 400;
   width: 100%;
   text-decoration: none;
   color: black;
-  font-size: 20px;
+  font-size: 18px;
 }
-.Listmovies > p:hover,
-.Listseries > p:hover,
-.Listcontact > p:hover,
-.ListAboutUs > p :hover {
+.Listmovies-label > p:hover,
+.Listseries-label > p:hover,
+.Listcontact-label > p:hover,
+.ListAboutUs-label > p :hover {
   cursor: pointer;
+}
+.active-ListDisplayMobile {
+  animation-name: dropDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.Listmovies-ListDisplay,
+.Listseries-ListDisplay {
+  width: 100%;
+  display: none;
+  transform: translateY(-200px);
+  transition: all 05s ease;
+}
+.Listcontact-ListDisplay {
+  transform: translateY(-400px);
+  width: 100%;
+  display: none;
+  transition: all 05s ease;
+}
+.Listmovies-kotakDisplay,
+.Listseries-kotakDisplay,
+.Listcontact-kotakDisplay {
+  width: 100%;
+}
+.Listmovies-Listlabel > p,
+.Listseries-Listlabel > p,
+.Listcontact-Listlabel > p {
+  border-bottom: 1px solid black;
+  font-weight: 500;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  padding: 2px;
+  text-align: center;
 }
 .ListsignIn > p,
 .ListsignUp > p {
@@ -266,10 +382,7 @@ body {
   top: 10px;
   right: 10px;
 }
-.activeList {
-  transform: translateY(0px);
-  transition: all 0.3s ease;
-}
+
 .header {
   width: 100%;
   position: relative;
@@ -382,11 +495,16 @@ body {
   }
 }
 @media screen and (max-width: 1210px) {
-  .movies > p,
-  .series > p,
-  .contact > p,
-  .AboutUs > p {
-    font-size: 15px;
+  .movies-label > p,
+  .series-label > p,
+  .contact-label > p,
+  .wishlist-label > p {
+    font-size: 13px;
+  }
+  .label-listDisplay > p {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -543,6 +661,10 @@ body {
   .text2 > h2 {
     font-size: 20px;
   }
+  .Listseries,
+  .Listcontact {
+    width: 35%;
+  }
 }
 @keyframes animasi {
   0% {
@@ -552,6 +674,20 @@ body {
     transform: translateY(10px);
   }
   100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes dropDown {
+  0% {
+    display: none;
+    transform: translateY(-300px);
+  }
+  50% {
+    display: block;
+    transform: translateY(-200px);
+  }
+  100% {
+    display: block;
     transform: translateY(0px);
   }
 }

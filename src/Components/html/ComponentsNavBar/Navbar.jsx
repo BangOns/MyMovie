@@ -1,12 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/NavbarHeader.css";
 import ImgSearch from "../../img/search.png";
 import ImgProfil from "../../img/profil.png";
 import ImgDoor from "../../img/door.png";
+import ImgArrowUp from "../../img/arrow-up.png";
+import {
+  movieGenreID,
+  movieGenreName,
+  tvGenreID,
+  tvGenreName,
+} from "./GetDataGenre";
+import { DropDown } from "./GetFuncDropDown";
 function Navbar() {
+  const [listGenreFilms, setListGenreFilms] = useState({
+    name: movieGenreName,
+    id: movieGenreID,
+  });
+  const [listGenreTV, setListGenreTV] = useState({
+    name: tvGenreName,
+    id: tvGenreID,
+  });
+
   const navigate = useNavigate();
   const user = localStorage.getItem("LoginUser");
+
+  function getGenreDesktop(e) {
+    const arrow = e.currentTarget.children[1];
+    const displayGenre = arrow.parentElement.parentElement.children[1];
+    if (arrow.children[0].className === "img-arrow") {
+      displayGenre.style.display = `block`;
+      arrow.children[0].className = "img-arrow active-arrow";
+    } else if (arrow.children[0].className === "img-arrow active-arrow") {
+      arrow.children[0].className = "img-arrow";
+      displayGenre.style.display = `none`;
+    }
+  }
+  function getGenreMobile(e) {
+    let arrowRecomend = document.querySelector(".Listmovies-arrow img");
+    let displayGenreRecomend = document.querySelector(
+      ".Listmovies-ListDisplay"
+    );
+    let arrowTvShow = document.querySelector(".Listseries-arrow img");
+    let displayGenreTvShow = document.querySelector(".Listseries-ListDisplay");
+    let arrowPopular = document.querySelector(".Listcontact-arrow img");
+    let displayGenrePopular = document.querySelector(
+      ".Listcontact-ListDisplay"
+    );
+    if (
+      e.currentTarget.parentElement.className ===
+      displayGenreRecomend.parentElement.className
+    ) {
+      DropDown(
+        displayGenreRecomend,
+        displayGenreTvShow,
+        displayGenrePopular,
+        displayGenreRecomend.parentElement.className,
+        arrowRecomend,
+        arrowTvShow,
+        arrowPopular
+      );
+    } else if (
+      e.currentTarget.parentElement.className ===
+      displayGenreTvShow.parentElement.className
+    ) {
+      DropDown(
+        displayGenreTvShow,
+        displayGenreRecomend,
+        displayGenrePopular,
+        displayGenreTvShow.parentElement.className,
+        arrowTvShow,
+        arrowPopular,
+        arrowRecomend
+      );
+    } else if (
+      e.currentTarget.parentElement.className ===
+      displayGenrePopular.parentElement.className
+    ) {
+      DropDown(
+        displayGenrePopular,
+        displayGenreTvShow,
+        displayGenreRecomend,
+        displayGenrePopular.parentElement.className,
+        arrowPopular,
+        arrowTvShow,
+        arrowRecomend
+      );
+    }
+  }
+
   function getLogout() {
     if (document.querySelector(".Logout").style.display === "none")
       return (document.querySelector(".Logout").style.display = "flex");
@@ -24,16 +106,94 @@ function Navbar() {
       <div className="attr">
         <div className="list">
           <div className="movies">
-            <p onClick={() => navigate("/RecomendedFilms")}>Recomended</p>
+            <div className="movies-display" onClick={getGenreDesktop}>
+              <div className="movies-label">
+                <p>Recomended</p>
+              </div>
+              <div className="movies-arrow">
+                <img src={ImgArrowUp} alt="" className="img-arrow" />
+              </div>
+            </div>
+            <div className="movies-listDisplay">
+              <div className="movies-kotakDisplay">
+                {listGenreFilms.name.map((nameFilms, index) => {
+                  return (
+                    <div className="label-listDisplay" key={index}>
+                      <p
+                        onClick={() => {
+                          navigate(`RecomendedFilms/${listGenreTV.id[index]}`);
+                        }}
+                      >
+                        {nameFilms}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="series">
-            <p>TV Show</p>
+            <div className="series-display" onClick={getGenreDesktop}>
+              <div className="series-label">
+                <p>Tv Show</p>
+              </div>
+              <div className="series-arrow">
+                <img src={ImgArrowUp} alt="" className="img-arrow" />
+              </div>
+            </div>
+            <div className="series-listDisplay">
+              <div className="movies-kotakDisplay">
+                {listGenreTV.name.map((nameFilms, index) => {
+                  return (
+                    <div className="label-listDisplay" key={index}>
+                      <p
+                        onClick={() => {
+                          navigate(
+                            `RecomendedFilms/${listGenreFilms.id[index]}`
+                          );
+                        }}
+                      >
+                        {nameFilms}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="contact">
-            <p>Popular</p>
+            <div className="contact-display" onClick={getGenreDesktop}>
+              <div className="contact-label">
+                <p>Popular</p>
+              </div>
+              <div className="contact-arrow">
+                <img src={ImgArrowUp} alt="" className="img-arrow" />
+              </div>
+            </div>
+            <div className="contact-listDisplay">
+              <div className="movies-kotakDisplay">
+                {listGenreFilms.name.map((nameFilms, index) => {
+                  return (
+                    <div className="label-listDisplay" key={index}>
+                      <p
+                        onClick={() => {
+                          navigate(
+                            `RecomendedFilms/${listGenreFilms.id[index]}`
+                          );
+                        }}
+                      >
+                        {nameFilms}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="AboutUs">
-            <p>Wishlist</p>
+            <div className="wishlist-label">
+              <p>Wishlist</p>
+            </div>
           </div>
         </div>
       </div>
@@ -96,13 +256,67 @@ function Navbar() {
       <div className="listBurgerNav">
         <div className="thisList">
           <div className="Listmovies">
-            <p>Recomended</p>
+            <div className="Listmovies-display" onClick={getGenreMobile}>
+              <div className="Listmovies-label">
+                <p>Recomended</p>
+              </div>
+              <div className="Listmovies-arrow">
+                <img src={ImgArrowUp} alt="" className="img-arrow" />
+              </div>
+            </div>
+            <div className="Listmovies-ListDisplay">
+              <div className="Listmovies-kotakDisplay">
+                {listGenreFilms.name.map((resFIlm, index) => {
+                  return (
+                    <div className="Listmovies-Listlabel" key={index}>
+                      <p>{resFIlm}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="Listseries">
-            <p>TV Show</p>
+            <div className="Listseries-display" onClick={getGenreMobile}>
+              <div className="Listseries-label">
+                <p>Tv Show</p>
+              </div>
+              <div className="Listseries-arrow">
+                <img src={ImgArrowUp} alt="" className="img-arrow" />
+              </div>
+            </div>
+            <div className="Listseries-ListDisplay">
+              <div className="Listseries-kotakDisplay">
+                {listGenreFilms.name.map((resFIlm, index) => {
+                  return (
+                    <div className="Listseries-Listlabel" key={index}>
+                      <p>{resFIlm}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="Listcontact">
-            <p>Popular</p>
+            <div className="Listcontact-display" onClick={getGenreMobile}>
+              <div className="Listcontact-label">
+                <p>Popular</p>
+              </div>
+              <div className="Listcontact-arrow">
+                <img src={ImgArrowUp} alt="" className="img-arrow" />
+              </div>
+            </div>
+            <div className="Listcontact-ListDisplay">
+              <div className="Listcontact-kotakDisplay">
+                {listGenreFilms.name.map((resFIlm, index) => {
+                  return (
+                    <div className="Listcontact-Listlabel" key={index}>
+                      <p>{resFIlm}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="ListAboutUs">
             <p>Wishlist</p>
