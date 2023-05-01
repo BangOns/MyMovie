@@ -82,14 +82,17 @@
   height: 340px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+}
+.FilmSearch {
+  margin-bottom: 10px;
 }
 .Film :hover,
 .Film2 :hover,
 .Film3 :hover,
 .Film4:hover,
-.FilmSearch:hover {
+.imgFilmSearch > img:hover {
   cursor: pointer;
 }
 .imgFilm > img,
@@ -101,7 +104,9 @@
   height: 260px;
   border-radius: 20px;
 }
-.rating {
+
+.rating,
+.ratingSearch {
   width: 210px;
   height: 20px;
   display: flex;
@@ -109,7 +114,9 @@
   gap: 5px;
   align-items: center;
 }
-.Angkarating {
+
+.Angkarating,
+.AngkaratingSearch {
   font-weight: 700;
 }
 .swiper-button-prev {
@@ -121,6 +128,7 @@
   border-left: 0.8px #dfb300 solid;
   border-bottom: 0.8px #dfb300 solid;
 }
+
 .thisSize {
   height: 100%;
   background-color: #dfb300;
@@ -331,7 +339,6 @@
   .Film3,
   .Film4,
   .FilmSearch {
-    /* width: 140px; */
     height: 300px;
   }
   .rating {
@@ -393,6 +400,16 @@
   }
 }
 @media screen and (max-width: 750px) {
+  .FilmSearch {
+    height: 261px;
+    width: 163px;
+  }
+
+  .imgFilmSearch > img {
+    width: 132px;
+    height: 179px;
+  }
+
   .footer {
     width: 100%;
     height: 600px;
@@ -481,6 +498,13 @@
     width: 370px;
     height: 45px;
   }
+  .ratingSearch {
+    width: 154px;
+  }
+  .nameFilmSearch {
+    width: 131px;
+    height: 26px;
+  }
   .inputContact > input {
     width: 340px;
     height: 40px;
@@ -513,6 +537,9 @@
   }
 }
 @media screen and (max-width: 530px) {
+  .mainSearch {
+    padding: 0;
+  }
   .inputContact {
     width: 310px;
     height: 40px;
@@ -527,8 +554,23 @@
     height: 45px;
     font-size: 14px;
   }
+  .ratingSearch {
+    width: 121px;
+  }
+  .FilmSearch {
+    height: 238px;
+    width: 125px;
+  }
+  .imgFilmSearch > img {
+    width: 111px;
+    height: 146px;
+  }
 }
 @media screen and (max-width: 450px) {
+  .nameFilmSearch {
+    width: 110px;
+    height: 26px;
+  }
   .Tv > p {
     width: 36%;
   }
@@ -566,7 +608,41 @@
     row-gap: 10px;
   }
 }
-
+@media screen and (max-width: 430px) {
+  .FilmSearch {
+    height: 208px;
+    width: 101px;
+  }
+  .imgFilmSearch > img {
+    width: 96px;
+    height: 126px;
+  }
+  .ratingSearch {
+    width: 94px;
+  }
+  .nameFilmSearch {
+    width: 94px;
+    height: 26px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .FilmSearch {
+    height: 175px;
+    width: 75px;
+  }
+  .imgFilmSearch > img {
+    width: 90px;
+    height: 112px;
+  }
+  .nameFilmSearch > p {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .AngkaratingSearch > p {
+    font-weight: 500;
+    font-size: 13px;
+  }
+}
 @font-face {
   font-family: "Poppins";
   src: url("../font/Poppins-Regular.ttf") format("truetype");
