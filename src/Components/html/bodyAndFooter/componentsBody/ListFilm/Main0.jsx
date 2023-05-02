@@ -30,7 +30,7 @@ function Main0() {
   return (
     <main className="main0">
       <div className="textTopIn2023">
-        <p>New Release</p>
+        <p>Now Playing</p>
       </div>
       <div className="listFilm">
         {myRelease && !isLoading ? (
