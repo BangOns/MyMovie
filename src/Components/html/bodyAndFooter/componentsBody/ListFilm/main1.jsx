@@ -29,7 +29,7 @@ function Main1() {
   return (
     <main className="main1">
       <div className="textTopIn2023">
-        <p>Recomended</p>
+        <p>Recommended</p>
       </div>
       <div className="listFilm">
         {myFilms && !isLoading ? (
