@@ -3,8 +3,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useDispatch, useSelector } from "react-redux";
-import { GetTV } from "../../../../../Action/ListTvShow";
 import ImgError from "../../../../img/Error-Tv.png";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -21,15 +19,8 @@ function Main2() {
     );
   });
   const navigate = useNavigate();
-  const { GetTvs } = useSelector((state) => state.TvShowReducer);
   const [page, setPage] = useState(4);
-  const dispatch = useDispatch();
   let myTv = data2?.data.results;
-  useEffect(() => {
-    if (!GetTvs && !isLoading) {
-      dispatch(GetTV(myTv));
-    }
-  }, [dispatch, GetTvs, isLoading]);
 
   useEffect(() => {
     if (innerWidth < 850 && innerWidth > 600) {
@@ -46,7 +37,7 @@ function Main2() {
         <p>Tv Show</p>
       </div>
       <div className="listFilm">
-        {GetTvs && !isLoading ? (
+        {myTv && !isLoading ? (
           <Swiper
             navigation={true}
             slidesPerView={page}
@@ -54,7 +45,7 @@ function Main2() {
             pagination={{ clickable: true }}
             className="mySwiper thisFilm TvShow"
           >
-            {GetTvs.map((myTv) => {
+            {myTv.map((myTv) => {
               let vote = myTv.vote_average.toLocaleString().split(".").join("");
 
               return (

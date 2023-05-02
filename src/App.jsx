@@ -12,6 +12,7 @@ import MainDetailsTv from "./Components/html/bodyAndFooter/componentsBody/ListFi
 import Navbar from "./Components/html/ComponentsNavBar/Navbar";
 import SignUp from "./Components/html/ComponentsNavBar/SignUp";
 import SignIn from "./Components/html/ComponentsNavBar/SignIn";
+import MainDetailsNewRelease from "./Components/html/bodyAndFooter/componentsBody/ListFilm/Details/mainDetailsNewRelease";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
         <Route path="/" element={<Body />} />
         <Route path="detailsFilms/:id" element={<MainDetails />} />
         <Route path="detailsFilmsTv/:id" element={<MainDetailsTv />} />
+        <Route
+          path="detailsFilmsRelease/:id"
+          element={<MainDetailsNewRelease />}
+        />
         <Route path="RecomendedFilms/:id" element={<MainRecomendedDetails />} />
         <Route path="TvShowFilms/:id" element={<MainTvShowDetails />} />
         <Route path="PopularFilms/:id" element={<MainPopularDetails />} />

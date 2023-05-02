@@ -3,9 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
-import { GetPopular } from "../../../../../Action/ListPopular";
 import axios from "axios";
 import ImgError from "../../../../img/Error-Tv.png";
 import { useNavigate } from "react-router";
@@ -21,15 +19,8 @@ function Main3() {
     );
   });
   const navigate = useNavigate();
-  const { GetPops } = useSelector((state) => state.PopularReducer);
   const [page, setPage] = useState(4);
-  const dispatch = useDispatch();
   let myPop = data3?.data.results;
-  useEffect(() => {
-    if (!GetPops && !isLoading) {
-      dispatch(GetPopular(myPop));
-    }
-  }, [dispatch, GetPops, isLoading]);
 
   useEffect(() => {
     if (innerWidth < 850 && innerWidth > 600) {
@@ -46,7 +37,7 @@ function Main3() {
         <p>Popular</p>
       </div>
       <div className="listFilm">
-        {GetPops && !isLoading ? (
+        {myPop && !isLoading ? (
           <Swiper
             navigation={true}
             slidesPerView={page}
@@ -54,7 +45,7 @@ function Main3() {
             pagination={{ clickable: true }}
             className="mySwiper thisFilm Popular"
           >
-            {GetPops.map((myFilmPop) => {
+            {myPop.map((myFilmPop) => {
               let vote = myFilmPop.vote_average
                 .toLocaleString()
                 .split(".")

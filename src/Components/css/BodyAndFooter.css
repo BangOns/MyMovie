@@ -1,4 +1,4 @@
-.main1 {
+.main0 {
   width: 100%;
   height: 450px;
   position: relative;
@@ -6,7 +6,7 @@
   top: 750px;
   margin-top: 130px;
 }
-.main2 {
+.main1 {
   width: 100%;
   height: 450px;
   position: relative;
@@ -14,7 +14,7 @@
   top: 1250px;
   margin-top: 130px;
 }
-.main3 {
+.main2 {
   width: 100%;
   height: 450px;
   position: relative;
@@ -22,7 +22,7 @@
   top: 1750px;
   margin-top: 130px;
 }
-.main4 {
+.main3 {
   width: 100%;
   height: 450px;
   position: relative;
@@ -30,6 +30,15 @@
   top: 2250px;
   margin-top: 130px;
 }
+.main4 {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  position: absolute;
+  top: 2750px;
+  margin-top: 130px;
+}
+
 .textTopIn2023 {
   width: 100%;
   height: 50px;
@@ -74,6 +83,7 @@
   display: flex;
   justify-content: center;
 }
+.Film0,
 .Film,
 .Film2,
 .Film3,
@@ -88,6 +98,7 @@
 .FilmSearch {
   margin-bottom: 10px;
 }
+.Film0:hover,
 .Film :hover,
 .Film2 :hover,
 .Film3 :hover,
@@ -95,6 +106,7 @@
 .imgFilmSearch > img:hover {
   cursor: pointer;
 }
+.imgFilm0 > img,
 .imgFilm > img,
 .imgFilm2 > img,
 .imgFilm3 > img,
@@ -133,6 +145,7 @@
   height: 100%;
   background-color: #dfb300;
 }
+.nameFilm0,
 .nameFilm,
 .nameFilm2,
 .nameFilm3,
@@ -147,6 +160,7 @@
   color: white;
   border-radius: 35px;
 }
+.nameFilm0 > p,
 .nameFilm > p,
 .nameFilm2 > p,
 .nameFilm3 > p,
@@ -334,6 +348,7 @@
   .thisFilm {
     align-items: center;
   }
+  .Film0,
   .Film,
   .Film2,
   .Film3,
@@ -344,7 +359,7 @@
   .rating {
     width: 190px;
   }
-  .imgFilm > img,
+  .imgFilm0 > img .imgFilm > img,
   .imgFilm2 > img,
   .imgFilm3 > img,
   .imgFilm4 > img,
@@ -352,6 +367,7 @@
     width: 160px;
     height: 230px;
   }
+  .nameFilm0,
   .nameFilm,
   .nameFilm2,
   .nameFilm3,
@@ -360,7 +376,7 @@
     width: 160px;
     height: 35px;
   }
-  .nameFilm > p,
+  .nameFilm0 > p .nameFilm > p,
   .nameFilm2 > p,
   .nameFilm3 > p,
   .nameFilm4 > p,
@@ -616,6 +632,7 @@
   .imgFilmSearch > img {
     width: 96px;
     height: 126px;
+    border-radius: 5px;
   }
   .ratingSearch {
     width: 94px;
@@ -635,7 +652,7 @@
     height: 112px;
   }
   .nameFilmSearch > p {
-    font-size: 8px;
+    font-size: 6px;
     letter-spacing: 0;
   }
   .AngkaratingSearch > p {

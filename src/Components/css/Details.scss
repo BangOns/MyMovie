@@ -74,7 +74,9 @@
   .Genre,
   .Production,
   .Duration,
-  .Rate {
+  .Rate,
+  .Tempat,
+  .LinkPage {
     width: 100%;
     display: flex;
     @include myFont();
@@ -84,7 +86,9 @@
     .labelGenre,
     .labelProduction,
     .labelDuration,
-    .labelRate {
+    .labelRate,
+    .labelTempat,
+    .labelLinkPage {
       width: 30%;
     }
   }
@@ -206,7 +210,9 @@
     .Genre,
     .Production,
     .Duration,
-    .Rate {
+    .Rate,
+    .Tempat,
+    .LinkPage {
       font-size: 13px;
       .LabelDirector,
       .labelReales,
@@ -214,7 +220,9 @@
       .labelGenre,
       .labelProduction,
       .labelDuration,
-      .labelRate {
+      .labelRate,
+      .labelTempat,
+      .labelLinkPage {
         width: 50%;
       }
     }

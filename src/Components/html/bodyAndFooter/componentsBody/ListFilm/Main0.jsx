@@ -4,34 +4,19 @@ import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useQuery } from "react-query";
-import ImgError from "../../../../img/Error-Tv.png";
 import axios from "axios";
+import ImgError from "../../../../img/Error-Tv.png";
 import { useNavigate } from "react-router";
 
-function Main4() {
-  const {
-    data: data4,
-    isLoading,
-    isError,
-  } = useQuery(
-    ["dataFilm4"],
-    async () => {
-      return await axios.get(
-        "https://api.themoviedb.org/3/keyword/7348-indonesia/movies?api_key=df3bdd5a174cac305c5d71d51733fff7&language=id-ID&page=3"
-      );
-    },
-    {
-      select: (data) => {
-        let response = data?.data.results.filter((v) => {
-          return v.original_language === "id";
-        });
-        return response;
-      },
-    }
-  );
+function Main0() {
+  const { data, isLoading, isError } = useQuery(["dataFilm0"], async () => {
+    return await axios.get(
+      "https://api.themoviedb.org/3/movie/now_playing?api_key=df3bdd5a174cac305c5d71d51733fff7&sort_by=popularity.desc&page=1&language=id-ID&region=ID"
+    );
+  });
   const navigate = useNavigate();
   const [page, setPage] = useState(4);
-  let myIndo = data4;
+  let myRelease = data?.data.results;
 
   useEffect(() => {
     if (innerWidth < 850 && innerWidth > 600) {
@@ -43,44 +28,52 @@ function Main4() {
     }
   });
   return (
-    <main className="main4">
+    <main className="main0">
       <div className="textTopIn2023">
-        <p>Indonesia</p>
+        <p>New Release</p>
       </div>
       <div className="listFilm">
-        {myIndo && !isLoading ? (
+        {myRelease && !isLoading ? (
           <Swiper
             navigation={true}
             slidesPerView={page}
             modules={[Navigation, Pagination]}
             pagination={{ clickable: true }}
-            className="mySwiper thisFilm Indonesia"
+            className="mySwiper thisFilm Popular"
           >
-            {myIndo.map((myFilmIndo) => {
-              let vote = myFilmIndo.vote_average
+            {myRelease.map((myFilmRelease) => {
+              let vote = myFilmRelease.vote_average
                 .toLocaleString()
                 .split(".")
                 .join("")
                 .slice(0, 2);
+
               return (
-                <SwiperSlide key={myFilmIndo.id}>
-                  <div className="Film4">
+                <SwiperSlide key={myFilmRelease.id}>
+                  <div className="Film0">
                     <div
-                      className="imgFilm4"
-                      onClick={() => navigate(`detailsFilms/${myFilmIndo.id}`)}
+                      className="imgFilm0"
+                      onClick={() =>
+                        navigate(`detailsFilmsRelease/${myFilmRelease.id}`)
+                      }
                     >
                       <img
                         src={`https://image.tmdb.org/t/p/original/${
-                          myFilmIndo.poster_path
-                            ? myFilmIndo.poster_path
-                            : myFilmIndo.backdrop_path
+                          myFilmRelease.poster_path
+                            ? myFilmRelease.poster_path
+                            : myFilmRelease.backdrop_path
                         }`}
-                        alt={`Image ${myFilmIndo.original_title}`}
+                        alt=""
                       />
                     </div>
                     <div className="rating">
                       <div className="Angkarating">
-                        <p>{String(myFilmIndo.vote_average).slice(0, 3)}</p>
+                        <p>
+                          {myFilmRelease.vote_average.toLocaleString().length >
+                          2
+                            ? myFilmRelease.vote_average
+                            : `0.${myFilmRelease.vote_average}`}
+                        </p>
                       </div>
                       <div className="panjangRating">
                         <div
@@ -89,8 +82,8 @@ function Main4() {
                         ></div>
                       </div>
                     </div>
-                    <div className="nameFilm4">
-                      <p>{myFilmIndo.original_title}</p>
+                    <div className="nameFilm0">
+                      <p>{myFilmRelease.original_title}</p>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -120,4 +113,4 @@ function Main4() {
   );
 }
 
-export default Main4;
+export default Main0;

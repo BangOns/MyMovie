@@ -3,32 +3,19 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { GetFilms } from "../../../../../Action/ListFilm1";
 import ImgError from "../../../../img/Error-Tv.png";
 import { useNavigate } from "react-router";
 function Main1() {
-  const { data, isLoading, isError, error, isSuccess } = useQuery(
-    ["dataFilm1"],
-    async () => {
-      return await axios.get(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US&page=1"
-      );
-    }
-  );
-
-  const { GetFilm } = useSelector((state) => state.RecomendedReducer);
+  const { data, isLoading, isError } = useQuery(["dataFilm1"], async () => {
+    return await axios.get(
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US&page=1"
+    );
+  });
   const [page, setPage] = useState(4);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   let myFilms = data?.data.results;
-  useEffect(() => {
-    if (!GetFilm && !isLoading) {
-      dispatch(GetFilms(myFilms));
-    }
-  }, [dispatch, GetFilm, isLoading]);
 
   useEffect(() => {
     if (innerWidth < 850 && innerWidth > 600) {
@@ -45,7 +32,7 @@ function Main1() {
         <p>Recomended</p>
       </div>
       <div className="listFilm">
-        {GetFilm && !isLoading ? (
+        {myFilms && !isLoading ? (
           <Swiper
             navigation={true}
             slidesPerView={page}
@@ -53,7 +40,7 @@ function Main1() {
             pagination={{ clickable: true }}
             className="mySwiper thisFilm"
           >
-            {GetFilm.map((films) => {
+            {myFilms.map((films) => {
               let vote = films.vote_average
                 .toLocaleString()
                 .split(".")

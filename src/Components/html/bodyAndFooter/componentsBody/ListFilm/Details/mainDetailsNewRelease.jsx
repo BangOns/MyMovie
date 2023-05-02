@@ -5,14 +5,26 @@ import "../../../../../css/Details.scss";
 import { useParams } from "react-router";
 import { response1, response2 } from "./getData";
 import ImgError from "../../../../../img/Error-tv.png";
-function MainDetails() {
+
+function MainDetailsNewRelease() {
   const { id } = useParams();
   const { data: data1 } = response1(id);
   const { data: data2, isLoading, isError } = response2(data1);
-  console.log(data1?.data);
   let getMinutess = data1?.data.runtime;
   let hours = Math.round(getMinutess / 60);
   let minutes = hours % 60;
+  let NamaBioskop = [
+    "Cinepolis, Pejaten Village",
+    "CGV, AEON MALL JGC",
+    "Cinema XXI, MALL CIJANTUNG",
+    "Cinepolis, Tamini Square",
+    "CGV, Buaran Plaza",
+    "Cinema XXI, Kuningan City",
+    "Cinepolis, Kalibata City Square",
+    "Cinema XXI, Cityplaza Klender",
+    "CGV Central Park",
+  ];
+  let RandomBioskop = ~~(Math.random() * NamaBioskop.length);
   return (
     <div>
       {data2 && !isLoading && !isError ? (
@@ -145,11 +157,23 @@ function MainDetails() {
                       </p>
                     </div>
                   </div>
-                  <div className="Rate">
-                    <div className="labelRate">
+                  <div className="Tempat">
+                    <div className="labelTempat">
+                      <p>On Air</p>
+                    </div>
+                    <div className="nameTempat">
+                      <p>
+                        :{" "}
+                        {NamaBioskop[RandomBioskop] &&
+                          NamaBioskop[RandomBioskop]}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="LinkPage">
+                    <div className="labelLinkPage">
                       <p>Link Page</p>
                     </div>
-                    <div className="nameRate">
+                    <div className="nameLinkPage">
                       <p>
                         :{" "}
                         {data1.data.homepage ? (
@@ -219,4 +243,4 @@ function MainDetails() {
   );
 }
 
-export default MainDetails;
+export default MainDetailsNewRelease;
