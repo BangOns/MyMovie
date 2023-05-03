@@ -7,10 +7,10 @@ function Header() {
       <div className="backgroundheader">
         <div className="TextHeader">
           <div className="text1">
-            <h1>Welcome to the MyMovie</h1>
+            <h1>Welcome to the</h1>
           </div>
           <div className="text2">
-            <h2>enjoy watching</h2>
+            <h2>MyMovie</h2>
           </div>
           <div className="article">
             <p>
