@@ -4,11 +4,12 @@ import "../../../../../css/BodyAndFooter.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useParams } from "react-router";
-import ListDetailsFilmPopular from "./ListDetailsFilm/ListDetailsFilmPopular";
-function MainPopularDetails() {
+import ListDetailsFilmRecomend from "./ListGenreFilm/ListDetailsFilmRecomend";
+function MainRecomendedDetails() {
   const { id } = useParams();
   const displayGenre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -48,7 +49,7 @@ function MainPopularDetails() {
             {displayGenre.map((pageGenre) => {
               return (
                 <SwiperSlide key={pageGenre}>
-                  <ListDetailsFilmPopular ids={pageGenre} />
+                  <ListDetailsFilmRecomend ids={pageGenre} />
                 </SwiperSlide>
               );
             })}
@@ -59,4 +60,4 @@ function MainPopularDetails() {
   );
 }
 
-export default MainPopularDetails;
+export default MainRecomendedDetails;

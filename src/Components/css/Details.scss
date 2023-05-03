@@ -244,3 +244,44 @@
     }
   }
 }
+
+@keyframes thumb {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: rotate(-30deg);
+  }
+  90% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes thumb2 {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: rotateX(30deg);
+  }
+  90% {
+    transform: rotateX(100deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ThumbLikeColor from "../../../../../img/like-21-color.png";
 import ThumbLike from "../../../../../img/like-21.png";
 import "../../../../../css/Details.scss";
@@ -6,10 +6,56 @@ import "../../../../../css/Preloaders.css";
 import { useParams } from "react-router";
 import ImgError from "../../../../../img/Error-Tv.png";
 import { responseTv } from "./getData";
+import { useDispatch, useSelector } from "react-redux";
+import { AddWishList, RemoveWishList } from "../../../../../../Action/WishList";
 function MainDetailsTv() {
+  const { CartFilms } = useSelector((state) => state.CartFilmsReducer);
   const { id } = useParams();
   const { data: data1, isLoading, isError } = responseTv(id);
+  const user = localStorage.getItem("LoginUser");
+  const [Favorit, setFavorit] = useState({
+    Like: false,
+    disLike: false,
+  });
+  const dispatch = useDispatch();
+  let doneLike = CartFilms.find((cart) => cart.id === parseInt(id));
 
+  function myLike() {
+    setFavorit({
+      Like: !Favorit.Like,
+      disLike: false,
+    });
+    if (!Favorit.Like) {
+      CartFilms.push(data1?.data);
+      dispatch(AddWishList(CartFilms));
+      setFavorit({
+        Like: true,
+        disLike: false,
+      });
+    } else {
+      let filterCart = CartFilms.filter((cart) => cart.id !== data1?.data.id);
+      dispatch(RemoveWishList(filterCart));
+      setFavorit({
+        Like: false,
+        disLike: false,
+      });
+    }
+  }
+  function myDislike() {
+    if (!Favorit.disLike) {
+      let filterCart = CartFilms.filter((cart) => cart.id !== data1?.data.id);
+      dispatch(RemoveWishList(filterCart));
+      setFavorit({
+        Like: false,
+        disLike: true,
+      });
+    } else {
+      setFavorit({
+        Like: false,
+        disLike: false,
+      });
+    }
+  }
   return (
     <div>
       {data1 && !isLoading && !isError ? (
@@ -152,34 +198,60 @@ function MainDetailsTv() {
                     </div>
                   </div>
                 </div>
-                <div className="ButtonLikeAndDislike">
-                  <div className="buttonLike">
-                    <button type="button" className="like">
-                      <div className="thumbLike">
-                        <img src={ThumbLikeColor} alt="" className="unLike" />
-                        <img src={ThumbLike} alt="" className="doneLike" />
-                      </div>
-                      <div className="textLike">Like</div>
-                    </button>
+                {user && (
+                  <div className="ButtonLikeAndDislike">
+                    <div className="buttonLike">
+                      <button type="button" className="like" onClick={myLike}>
+                        <div className="thumbLike">
+                          <img
+                            src={ThumbLikeColor}
+                            alt=""
+                            className="unLike"
+                            style={{
+                              display: `${
+                                Favorit.Like || !!doneLike ? `none` : `block`
+                              }`,
+                            }}
+                          />
+                          <img
+                            src={ThumbLike}
+                            alt=""
+                            className="doneLike"
+                            style={{
+                              display: `${
+                                Favorit.Like || !!doneLike ? `block` : `none`
+                              }`,
+                            }}
+                          />
+                        </div>
+                        <div className="textLike">Like</div>
+                      </button>
+                    </div>
+                    <div className="buttonDislike" onClick={myDislike}>
+                      <button type="button" className="dislike">
+                        <div className="thumbDislike">
+                          <img
+                            src={ThumbLikeColor}
+                            alt="dislike"
+                            className="unDislike"
+                            style={{
+                              display: `${Favorit.disLike ? `none` : `block`}`,
+                            }}
+                          />
+                          <img
+                            src={ThumbLike}
+                            alt="dislike"
+                            className="doneDislike"
+                            style={{
+                              display: `${Favorit.disLike ? `block` : `none`}`,
+                            }}
+                          />
+                        </div>
+                        <div className="textDislike">Dislike</div>
+                      </button>
+                    </div>
                   </div>
-                  <div className="buttonDislike">
-                    <button type="button" className="dislike">
-                      <div className="thumbDislike">
-                        <img
-                          src={ThumbLikeColor}
-                          alt="dislike"
-                          className="unDislike"
-                        />
-                        <img
-                          src={ThumbLike}
-                          alt="dislike"
-                          className="doneDislike"
-                        />
-                      </div>
-                      <div className="textDislike">Dislike</div>
-                    </button>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

@@ -1,31 +1,31 @@
-import axios from "axios";
 import React, { Fragment } from "react";
-import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import ImgError from "../../../../img/Error-Tv.png";
-import "../../../../css/Preloaders.css";
+import ImgError from "../../../../../img/Error-Tv.png";
+import "../../../../../css/Preloaders.css";
 
-function MainSearch() {
+function MainWishlist() {
+  const { CartFilms } = useSelector((state) => state.CartFilmsReducer);
+
   const navigate = useNavigate();
-  const { searchInput } = useSelector((state) => state.MySearchReducer);
-  const { data, isLoading } = useQuery(["data-search", searchInput], () => {
-    return axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=df3bdd5a174cac305c5d71d51733fff7&page=1&sort_by=popularity.desc&query=${searchInput}`
-    );
-  });
-
+  function switchToDetails(dataFilm) {
+    if (dataFilm.hasOwnProperty("number_of_episodes")) {
+      navigate(`/detailsFilmsTv/${dataFilm.id}`);
+    } else {
+      navigate(`/detailsFilms/${dataFilm.id}`);
+    }
+  }
   return (
-    <main className="mainSearch">
-      <div className="textSearch">
-        <p>Film Results "{searchInput}" </p>
+    <main className="mainWishlist">
+      <div className="textWishlist">
+        <p>Film Favorit </p>
       </div>
-      <div className="isiSearch">
-        <div className="ListSearchFilm">
-          {data?.data.results.length !== 0 && !isLoading
-            ? data?.data.results.map((film, index) => {
+      <div className="isiWishlist">
+        <div className="ListWishlistFilm">
+          {CartFilms.length !== 0
+            ? CartFilms.map((film, index) => {
                 let vote =
-                  film.vote_average.toLocaleString().length > 2
+                  film.vote_average.toLocaleString().length > 3
                     ? film.vote_average
                         .toLocaleString()
                         .slice(0, 3)
@@ -34,10 +34,10 @@ function MainSearch() {
                     : film.vote_average.toLocaleString().split(".").join("");
                 return (
                   <Fragment key={index}>
-                    <div className="FilmSearch">
+                    <div className="FilmWishlist">
                       <div
-                        className="imgFilmSearch"
-                        onClick={() => navigate(`/detailsFilms/${film.id}`)}
+                        className="imgFilmWishlist"
+                        onClick={switchToDetails.bind(this, film)}
                       >
                         <img
                           src={`https://image.tmdb.org/t/p/original/${
@@ -48,10 +48,10 @@ function MainSearch() {
                           alt=""
                         />
                       </div>
-                      <div className="ratingSearch">
-                        <div className="AngkaratingSearch">
+                      <div className="ratingWishlist">
+                        <div className="AngkaratingWishlist">
                           <p>
-                            {film.vote_average.toLocaleString().length > 2
+                            {film.vote_average.toLocaleString().length > 3
                               ? film.vote_average.toLocaleString().slice(0, 3)
                               : `0.${film.vote_average}`}
                           </p>
@@ -63,15 +63,14 @@ function MainSearch() {
                           ></div>
                         </div>
                       </div>
-                      <div className="nameFilmSearch">
+                      <div className="nameFilmWishlist">
                         <p>{film.title ? film.title : "Null"}</p>
                       </div>
                     </div>
                   </Fragment>
                 );
               })
-            : data?.data.results.length === 0 &&
-              !isLoading && (
+            : CartFilms.length === 0 && (
                 <>
                   <div className="containerError">
                     <div className="imgError">
@@ -89,4 +88,4 @@ function MainSearch() {
   );
 }
 
-export default MainSearch;
+export default MainWishlist;

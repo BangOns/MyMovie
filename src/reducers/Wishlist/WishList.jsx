@@ -6,17 +6,21 @@ const InitialState = {
   CartFilms: [],
   amount: 0,
 };
-const CartFilms = (state = InitialState, action) => {
+const CartFilmsReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ADDWISH:
       return {
         ...state,
-        CartFilms: action.payload.films1,
-        amount: action.payload.amount,
+        CartFilms: action.payload.favorit,
+      };
+    case REMOVEWISH:
+      return {
+        ...state,
+        CartFilms: action.payload.favorit,
       };
 
     default:
       return state;
   }
 };
-export default CartFilms;
+export default CartFilmsReducer;

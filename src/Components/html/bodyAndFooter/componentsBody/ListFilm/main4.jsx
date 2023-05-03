@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
@@ -32,7 +32,6 @@ function Main4() {
   const navigate = useNavigate();
   const [page, setPage] = useState(4);
   let myIndo = data4;
-
   useEffect(() => {
     if (innerWidth < 850 && innerWidth > 600) {
       setPage(3);
@@ -42,6 +41,7 @@ function Main4() {
       setPage(1);
     }
   });
+
   return (
     <main className="main4">
       <div className="textTopIn2023">

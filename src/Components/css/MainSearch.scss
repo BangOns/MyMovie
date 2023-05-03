@@ -1,10 +1,12 @@
-.mainSearch {
+.mainSearch,
+.mainWishlist {
   width: 100%;
   position: absolute;
   top: 130px;
   padding: 20px;
 }
-.textSearch {
+.textSearch,
+.textWishlist {
   width: 100%;
   height: 50px;
   display: flex;
@@ -12,7 +14,8 @@
   margin-left: 5px;
   margin-bottom: 20px;
 }
-.textSearch::before {
+.textSearch::before,
+.textWishlist::before {
   content: "";
   display: block;
   width: 50px;
@@ -21,7 +24,8 @@
   margin-right: 7px;
   height: 1.7px;
 }
-.textSearch::after {
+.textSearch::after,
+.textWishlist::after {
   content: "";
   display: block;
   width: 20%;
@@ -30,13 +34,15 @@
 
   height: 1.7px;
 }
-.textSearch > p {
+.textSearch > p,
+.textWishlist > p {
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.125em;
   padding: 10px;
 }
-.ListSearchFilm {
+.ListSearchFilm,
+.listWishlistFilm {
   width: 100%;
   height: 100%;
   display: flex;

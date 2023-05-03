@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 
-import CartFilms from "./Wishlist/WishList";
+import CartFilmsReducer from "./Wishlist/WishList";
+import MySearchReducer from "./Search/Search";
 export default combineReducers({
-  CartFilms,
+  MySearchReducer,
+  CartFilmsReducer,
 });

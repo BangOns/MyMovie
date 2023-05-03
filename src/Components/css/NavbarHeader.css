@@ -69,6 +69,19 @@ body {
   text-decoration: none;
   color: black;
   font-size: 18px;
+  position: relative;
+}
+.wishlist-length {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ca26ff;
+  left: -23px;
+  top: -15px;
+}
+.wishlist-length > p {
+  padding: 0px 8px 3px 8px;
+  font-size: 15px;
+  font-weight: 700;
 }
 .movies-display:hover,
 .series-display:hover,
@@ -272,6 +285,9 @@ body {
 .Listcontact {
   width: 20%;
 }
+.ListAboutUs {
+  position: relative;
+}
 .Listmovies-display,
 .Listseries-display,
 .Listcontact-display {
@@ -337,6 +353,21 @@ body {
 .Listcontact-Listlabel > p:hover {
   cursor: pointer;
 }
+.wishlist-length-mobile {
+  position: absolute;
+  background-color: #4f4f4f;
+  border-radius: 50%;
+  top: -10px;
+  left: -20px;
+}
+.wishlist-length-mobile > p {
+  padding: 0 6px 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.ListAboutUs > p:hover {
+  cursor: pointer;
+}
 .ListsignIn > p,
 .ListsignUp > p {
   font-size: 20px;
@@ -380,7 +411,7 @@ body {
   cursor: pointer;
 }
 .thisSignInLogin:hover {
-  cursor: text !important;
+  cursor: pointer;
 }
 .active {
   position: fixed;
@@ -490,6 +521,7 @@ body {
   width: 552px;
   height: 532px;
 }
+
 @media screen and (max-width: 1350px) {
   .thisImage {
     right: 70px;

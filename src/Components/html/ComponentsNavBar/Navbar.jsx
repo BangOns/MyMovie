@@ -12,7 +12,10 @@ import {
   tvGenreName,
 } from "./GetDataGenre";
 import { DropDown } from "./GetFuncDropDown";
+import { useDispatch, useSelector } from "react-redux";
+import { ClientInput } from "../../../Action/ThisSearch";
 function Navbar() {
+  const { CartFilms } = useSelector((state) => state.CartFilmsReducer);
   const [listGenreFilms, setListGenreFilms] = useState({
     name: movieGenreName,
     id: movieGenreID,
@@ -21,11 +24,25 @@ function Navbar() {
     name: tvGenreName,
     id: tvGenreID,
   });
-
+  const [inputSearch, setInputSearch] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = localStorage.getItem("LoginUser");
 
+  function ListSearch(e) {
+    if (e.target.value.length !== 0) {
+      setInputSearch(e.target.value);
+      dispatch(ClientInput(e.target.value));
+      setTimeout(() => {
+        navigate("search");
+      }, 100);
+    } else {
+      setInputSearch("");
+      navigate("/");
+    }
+  }
   function getGenreDesktop(e) {
+    setInputSearch("");
     const arrow = e.currentTarget.children[1];
     const displayGenre = arrow.parentElement.parentElement.children[1];
     if (arrow.children[0].className === "img-arrow") {
@@ -37,6 +54,8 @@ function Navbar() {
     }
   }
   function getGenreMobile(e) {
+    setInputSearch("");
+
     let arrowRecomend = document.querySelector(".Listmovies-arrow img");
     let displayGenreRecomend = document.querySelector(
       ".Listmovies-ListDisplay"
@@ -90,6 +109,7 @@ function Navbar() {
   }
 
   function getLogout() {
+    setInputSearch("");
     if (document.querySelector(".Logout").style.display === "none")
       return (document.querySelector(".Logout").style.display = "flex");
     document.querySelector(".Logout").style.display = "none";
@@ -98,7 +118,13 @@ function Navbar() {
     <nav className="navBar">
       <div className="ShowHub">
         <div className="textShowHub">
-          <p className="myMovie" onClick={() => navigate("/")}>
+          <p
+            className="myMovie"
+            onClick={() => {
+              setInputSearch("");
+              navigate("/");
+            }}
+          >
             MyMovie
           </p>
         </div>
@@ -206,17 +232,31 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div className="AboutUs">
-            <div className="wishlist-label">
-              <p>Wishlist</p>
+          {user && (
+            <div className="AboutUs">
+              <div
+                className="wishlist-label"
+                onClick={() => navigate(`Wishlist/${JSON.parse(user).name}`)}
+              >
+                <div className="wishlist-length">
+                  <p>{CartFilms.length}</p>
+                </div>
+                <p>Wishlist</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <div className="search">
         <div className="kotakSearch">
           <div className="input">
-            <input type="text" placeholder="Search" className="inputSearch" />
+            <input
+              type="text"
+              value={inputSearch}
+              placeholder="Search"
+              className="inputSearch"
+              onChange={ListSearch}
+            />
           </div>
           <div className="iconSearch" role="button">
             <img src={ImgSearch} alt="search" />
@@ -390,7 +430,18 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div className="ListAboutUs">
+          <div
+            className="ListAboutUs"
+            onClick={() => {
+              document
+                .querySelector(".listBurgerNav")
+                .classList.remove("activeList");
+              navigate(`Wishlist/${JSON.parse(user).name}`);
+            }}
+          >
+            <div className="wishlist-length-mobile">
+              <p>{CartFilms.length}</p>
+            </div>
             <p>Wishlist</p>
           </div>
           {!user ? (

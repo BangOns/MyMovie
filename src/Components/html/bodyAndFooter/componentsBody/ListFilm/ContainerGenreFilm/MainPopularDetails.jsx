@@ -7,9 +7,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useParams } from "react-router";
-import ListDetailsTv from "./ListDetailsFilm/ListDetailsTv";
-
-function MainTvShowDetails() {
+import ListDetailsFilmPopular from "./ListGenreFilm/ListDetailsFilmPopular";
+function MainPopularDetails() {
   const { id } = useParams();
   const displayGenre = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -17,7 +16,7 @@ function MainTvShowDetails() {
     ["data-name-page"],
     () => {
       return axios.get(
-        `https://api.themoviedb.org/3/genre/tv/list?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US`
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US`
       );
     },
     {
@@ -49,7 +48,7 @@ function MainTvShowDetails() {
             {displayGenre.map((pageGenre) => {
               return (
                 <SwiperSlide key={pageGenre}>
-                  <ListDetailsTv ids={pageGenre} />
+                  <ListDetailsFilmPopular ids={pageGenre} />
                 </SwiperSlide>
               );
             })}
@@ -60,4 +59,4 @@ function MainTvShowDetails() {
   );
 }
 
-export default MainTvShowDetails;
+export default MainPopularDetails;
