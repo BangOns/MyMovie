@@ -14,10 +14,10 @@ function Header() {
           </div>
           <div className="article">
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enimad minim veniam, quis nostrud exerci
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+            We are glad you're here! On MyMovie you can easily find out where to watch your favourite movies & TV series.
+            MyMovie is easy and effective: Choose your favourite streaming providers and other providers.
+            Filter by genre and release year to find the perfect movie to stream today. 
+            Search for a specific movie or TV series to find out where to watch it legally online.
             </p>
           </div>
           <div className="buttonheader">
