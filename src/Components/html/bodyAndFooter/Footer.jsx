@@ -33,7 +33,7 @@ function ContainerFooter() {
             <div className="Github">
               <a href="#">
                 <div className="imgGithub">
-                  <img src={ImgGithub} alt="" />
+                  <img src={ImgGithub} alt="https://github.com/fadhil23-pdf" />
                 </div>
                 <div className="nameGithub">
                   <p>fadhil23-pdf</p>
@@ -43,7 +43,7 @@ function ContainerFooter() {
             <div className="Linkedin">
               <a href="#">
                 <div className="imgLinkedin">
-                  <img src={ImgLinkedIn} alt="" />
+                  <img src={ImgLinkedIn} alt="https://www.linkedin.com/in/rizki-nur-fadhila-025578227/" />
                 </div>
                 <div className="nameLinkedin">
                   <p>Rizki Nur Fadhila</p>
@@ -53,7 +53,7 @@ function ContainerFooter() {
             <div className="Twitter">
               <a href="">
                 <div className="imgTwitter">
-                  <img src={ImgTwitter} alt="" />
+                  <img src={ImgTwitter} alt="https://twitter.com/fdhlrizki" />
                 </div>
                 <div className="nameTwitter">
                   <p>Fdhlrizki</p>
@@ -63,7 +63,7 @@ function ContainerFooter() {
             <div className="Wa">
               <a href="">
                 <div className="imgWa">
-                  <img src={ImgWa} alt="" />
+                  <img src={ImgWa} alt="https://wa.me/6285963956970" />
                 </div>
                 <div className="nameWa">
                   <p>+62 859-6395-6970</p>
@@ -73,7 +73,7 @@ function ContainerFooter() {
             <div className="Facebook">
               <a href="">
                 <div className="imgFacebook">
-                  <img src={ImgFacebook} alt="" />
+                  <img src={ImgFacebook} alt="https://www.facebook.com/fdhlrizki.23" />
                 </div>
                 <div className="nameFacebook">
                   <p>Rizki Fadhila</p>
