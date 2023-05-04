@@ -21,7 +21,8 @@ function MainDetails() {
   let minutes = hours % 60;
   const user = localStorage.getItem("LoginUser");
   let doneLike = CartFilms.find((cart) => cart.id === parseInt(id));
-  function myLike() {
+  function myLike(e) {
+    e.preventDefault();
     setFavorit({
       Like: !Favorit.Like,
       disLike: false,
@@ -42,7 +43,8 @@ function MainDetails() {
       });
     }
   }
-  function myDislike() {
+  function myDislike(e) {
+    e.preventDefault();
     if (!Favorit.disLike) {
       let filterCart = CartFilms.filter((cart) => cart.id !== data1?.data.id);
       dispatch(RemoveWishList(filterCart));

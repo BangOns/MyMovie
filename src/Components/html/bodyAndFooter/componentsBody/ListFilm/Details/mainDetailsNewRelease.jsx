@@ -3,7 +3,12 @@ import ThumbLikeColor from "../../../../../img/like-21-color.png";
 import ThumbLike from "../../../../../img/like-21.png";
 import "../../../../../css/Details.scss";
 import { useParams } from "react-router";
-import { response1, response2 } from "./getData";
+import {
+  NamaBioskopList,
+  response1,
+  response2,
+  responseOnAir,
+} from "./getData";
 import ImgError from "../../../../../img/Error-tv.png";
 import { useDispatch, useSelector } from "react-redux";
 import { AddWishList, RemoveWishList } from "../../../../../../Action/WishList";
@@ -13,21 +18,11 @@ function MainDetailsNewRelease() {
   const { id } = useParams();
   const { data: data1 } = response1(id);
   const { data: data2, isLoading, isError } = response2(data1);
+  const { data } = responseOnAir();
   let getMinutess = data1?.data.runtime;
   let hours = Math.round(getMinutess / 60);
   let minutes = hours % 60;
-  let NamaBioskop = [
-    "Cinepolis, Pejaten Village",
-    "CGV, AEON MALL JGC",
-    "Cinema XXI, MALL CIJANTUNG",
-    "Cinepolis, Tamini Square",
-    "CGV, Buaran Plaza",
-    "Cinema XXI, Kuningan City",
-    "Cinepolis, Kalibata City Square",
-    "Cinema XXI, Cityplaza Klender",
-    "CGV Central Park",
-  ];
-  let RandomBioskop = ~~(Math.random() * NamaBioskop.length);
+  let NamaBioskop = NamaBioskopList;
   const user = localStorage.getItem("LoginUser");
   const [Favorit, setFavorit] = useState({
     Like: false,
@@ -210,11 +205,7 @@ function MainDetailsNewRelease() {
                       <p>On Air</p>
                     </div>
                     <div className="nameTempat">
-                      <p>
-                        :{" "}
-                        {NamaBioskop[RandomBioskop] &&
-                          NamaBioskop[RandomBioskop]}
-                      </p>
+                      <p>: {NamaBioskop[data] ? NamaBioskop[data] : "N/A"}</p>
                     </div>
                   </div>
                   <div className="LinkPage">
