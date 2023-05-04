@@ -31,9 +31,9 @@ function ContainerFooter() {
         <div className="listSocialMedia">
           <div className="linkSocialMedia">
             <div className="Github">
-              <a href="#">
+              <a href="https://github.com/fadhil23-pdf">
                 <div className="imgGithub">
-                  <img src={ImgGithub} alt="https://github.com/fadhil23-pdf" />
+                  <img src={ImgGithub} alt="" />
                 </div>
                 <div className="nameGithub">
                   <p>fadhil23-pdf</p>
@@ -41,9 +41,9 @@ function ContainerFooter() {
               </a>
             </div>
             <div className="Linkedin">
-              <a href="#">
+              <a href="https://www.linkedin.com/in/rizki-nur-fadhila-025578227/">
                 <div className="imgLinkedin">
-                  <img src={ImgLinkedIn} alt="https://www.linkedin.com/in/rizki-nur-fadhila-025578227/" />
+                  <img src={ImgLinkedIn} alt="" />
                 </div>
                 <div className="nameLinkedin">
                   <p>Rizki Nur Fadhila</p>
@@ -51,9 +51,9 @@ function ContainerFooter() {
               </a>
             </div>
             <div className="Twitter">
-              <a href="">
+              <a href="https://twitter.com/fdhlrizki">
                 <div className="imgTwitter">
-                  <img src={ImgTwitter} alt="https://twitter.com/fdhlrizki" />
+                  <img src={ImgTwitter} alt="" />
                 </div>
                 <div className="nameTwitter">
                   <p>Fdhlrizki</p>
@@ -61,9 +61,9 @@ function ContainerFooter() {
               </a>
             </div>
             <div className="Wa">
-              <a href="">
+              <a href="https://wa.me/6285963956970">
                 <div className="imgWa">
-                  <img src={ImgWa} alt="https://wa.me/6285963956970" />
+                  <img src={ImgWa} alt="" />
                 </div>
                 <div className="nameWa">
                   <p>+62 859-6395-6970</p>
@@ -71,9 +71,9 @@ function ContainerFooter() {
               </a>
             </div>
             <div className="Facebook">
-              <a href="">
+              <a href="https://www.facebook.com/fdhlrizki.23">
                 <div className="imgFacebook">
-                  <img src={ImgFacebook} alt="https://www.facebook.com/fdhlrizki.23" />
+                  <img src={ImgFacebook} alt="" />
                 </div>
                 <div className="nameFacebook">
                   <p>Rizki Fadhila</p>
