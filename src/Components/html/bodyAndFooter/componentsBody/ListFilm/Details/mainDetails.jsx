@@ -5,7 +5,7 @@ import "../../../../../css/Details.scss";
 import { useParams } from "react-router";
 import { response1, response2 } from "./getData";
 import ImgError from "../../../../../img/Error-tv.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AddWishList, RemoveWishList } from "../../../../../../Action/WishList";
 function MainDetails() {
   const { CartFilms } = useSelector((state) => state.CartFilmsReducer);
@@ -19,15 +19,14 @@ function MainDetails() {
   let getMinutess = data1?.data.runtime;
   let hours = Math.round(getMinutess / 60);
   let minutes = hours % 60;
+  const dispatch = useDispatch();
   const user = localStorage.getItem("LoginUser");
   let doneLike = CartFilms.find((cart) => cart.id === parseInt(id));
+
   function myLike(e) {
     e.preventDefault();
-    setFavorit({
-      Like: !Favorit.Like,
-      disLike: false,
-    });
-    if (!Favorit.Like) {
+
+    if (!Favorit.Like && !doneLike) {
       CartFilms.push(data1?.data);
       dispatch(AddWishList(CartFilms));
       setFavorit({
@@ -43,6 +42,7 @@ function MainDetails() {
       });
     }
   }
+
   function myDislike(e) {
     e.preventDefault();
     if (!Favorit.disLike) {

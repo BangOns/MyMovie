@@ -21,11 +21,7 @@ function MainDetailsTv() {
   let doneLike = CartFilms.find((cart) => cart.id === parseInt(id));
 
   function myLike() {
-    setFavorit({
-      Like: !Favorit.Like,
-      disLike: false,
-    });
-    if (!Favorit.Like) {
+    if (!Favorit.Like && !doneLike) {
       CartFilms.push(data1?.data);
       dispatch(AddWishList(CartFilms));
       setFavorit({

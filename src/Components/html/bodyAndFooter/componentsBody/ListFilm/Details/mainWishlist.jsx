@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import ImgError from "../../../../../img/Error-Tv.png";
 import "../../../../../css/Preloaders.css";
+import "../../../../../css/MainSearch.scss";
 
 function MainWishlist() {
   const { CartFilms } = useSelector((state) => state.CartFilmsReducer);
