@@ -134,7 +134,7 @@ function Navbar() {
           <div className="movies">
             <div className="movies-display" onClick={getGenreDesktop}>
               <div className="movies-label">
-                <p>Recomended</p>
+                <p>Recommended</p>
               </div>
               <div className="movies-arrow">
                 <img src={ImgArrowUp} alt="" className="img-arrow" />
