@@ -205,7 +205,16 @@ function MainDetailsNewRelease() {
                       <p>On Air</p>
                     </div>
                     <div className="nameTempat">
-                      <p>: {NamaBioskop[data] ? NamaBioskop[data] : "N/A"}</p>
+                      <p>
+                        :{" "}
+                        {NamaBioskop[data] ? (
+                          <a href={NamaBioskop[data][0]}>
+                            {NamaBioskop[data][1]}
+                          </a>
+                        ) : (
+                          "N/A"
+                        )}
+                      </p>
                     </div>
                   </div>
                   <div className="LinkPage">

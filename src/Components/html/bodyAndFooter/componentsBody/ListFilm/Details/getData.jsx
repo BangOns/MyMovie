@@ -2,15 +2,24 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 export let NamaBioskopList = [
-  "Cinepolis, Pejaten Village",
-  "CGV, AEON MALL JGC",
-  "Cinema XXI, MALL CIJANTUNG",
-  "Cinepolis, Tamini Square",
-  "CGV, Buaran Plaza",
-  "Cinema XXI, Kuningan City",
-  "Cinepolis, Kalibata City Square",
-  "Cinema XXI, Cityplaza Klender",
-  "CGV Central Park",
+  ["https://maps.app.goo.gl/BxfiKPnUVfRureis5", "Cinepolis, Pejaten Village"],
+  ["https://maps.app.goo.gl/91WKX678iM4u6fA68", "CGV, AEON MALL JGC"],
+  [
+    "https://maps.app.goo.gl/uvQ7VTyJ1vDNwzH8A",
+    "Cinema XXI, MALL GRAHA CIJANTUNG",
+  ],
+  ["https://maps.app.goo.gl/xZuPob129hafPhng6", "Cinepolis, Tamini Square"],
+  ["https://maps.app.goo.gl/FnzhLp2NcFCLN6r87", "CGV, Buaran Plaza"],
+  ["https://maps.app.goo.gl/ha3suuowj1NFn5fq7", "Cinema XXI, Kuningan City"],
+  [
+    "https://maps.app.goo.gl/CKaSNuRWfhLotbYy7",
+    "Cinepolis, Kalibata City Square",
+  ],
+  [
+    "https://maps.app.goo.gl/q2iKkEAjbtGt6koA8",
+    "Cinema XXI, Cityplaza Klender",
+  ],
+  ["https://maps.app.goo.gl/h2xxLpShuSzTsS9Z8", "CGV, Central Park"],
 ];
 export const response1 = (id) => {
   return useQuery(
