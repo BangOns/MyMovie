@@ -13,6 +13,8 @@ function MainSearch() {
   const navigate = useNavigate();
   const { searchInput } = useSelector((state) => state.MySearchReducer);
   const { data, isLoading } = useQuery(["data-search", searchInput], () => {
+    // disini sistem yang mengggunakan algoritma Apriori
+    // sistem ini akan memunculkan data sesuai huruf yang pertama kali diketikan dan mengurutkan nya sesuai rated tertinggi
     return axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=df3bdd5a174cac305c5d71d51733fff7&page=1&sort_by=popularity.desc&query=${searchInput}`
     );
