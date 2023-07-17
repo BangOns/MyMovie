@@ -23,10 +23,12 @@ function MainSearch() {
   return (
     <main className="mainSearch">
       <div className="textSearch">
+        {/* dan kami memunculkan inputan user disini juga  */}
         <p>Film Results "{searchInput}" </p>
       </div>
       <div className="isiSearch">
         <div className="ListSearchFilm">
+          {/* Disini data dimunculkan  */}
           {data?.data.results.length !== 0 && !isLoading
             ? data?.data.results.map((film, index) => {
                 let vote =
