@@ -6,6 +6,9 @@ import { useNavigate } from "react-router";
 import ImgError from "../../../../img/Error-Tv.png";
 import "../../../../css/Preloaders.css";
 
+// di file search ini saya melakukan validasi search dengan cara memfiter seluruh data film dengan nama Film yang sesuai dengan huruf abjad atau kalimat yang sesusai dengan user ketik ke inputan search, sebagi contoh , jika user mengetikan suatu huruf ke inputan maka sistem akan mencari data yang jika nama film tersebut awalan nya atau akhirannya atau terkandung huruf tersebut maka sistem tersebut akan memunculkan data yang sesuai dan saya memunculkan data nya berurut sesuai dengan rated dari film tersebut,
+// Maka algoritma yang sesuai dengan sistem yang saya buat yaitu Algoritma Apriori, karena yang saya pahami dari definisi algoritma tersbut yaitu Algoritma ini ditujukan untuk mencari kombinasi item-set yang mempunyai suatu nilai keseringan tertentu sesuai kriteria atau filter yang diinginkan. Maka dari itu menurut saya algoritma ini sangat sesuai dengan sistem tersebut
+
 function MainSearch() {
   const navigate = useNavigate();
   const { searchInput } = useSelector((state) => state.MySearchReducer);
