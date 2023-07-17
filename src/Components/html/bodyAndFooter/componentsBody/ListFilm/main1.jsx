@@ -9,12 +9,15 @@ import ImgError from "../../../../img/Error-Tv.png";
 import { useNavigate } from "react-router";
 function Main1() {
   const { data, isLoading, isError } = useQuery(["dataFilm1"], async () => {
+    // Disini saya menganalisis film yang direkomedasikan untuk ditonton yaitu dengan menggunakan top rated karena jika memang video itu baik dan bagus ditonton otomatis rating nya tinggi dan pada sistem API ini menggunakan algoritma collaborative filtering
+    // dan kami disini mengambil data nya untk memunculkan film dan data yang bisa diambil
     return await axios.get(
       "https://api.themoviedb.org/3/movie/top_rated?api_key=df3bdd5a174cac305c5d71d51733fff7&language=en-US&page=1"
     );
   });
   const [page, setPage] = useState(4);
   const navigate = useNavigate();
+  // disini kita mengecek data itu ada atau tidak
   let myFilms = data?.data.results;
 
   useEffect(() => {
@@ -32,6 +35,7 @@ function Main1() {
         <p>Recommended</p>
       </div>
       <div className="listFilm">
+        {/* Dan dibagian ini kami memunculkan dan menampilkan data yang telah tersedia */}
         {myFilms && !isLoading ? (
           <Swiper
             navigation={true}
@@ -41,6 +45,7 @@ function Main1() {
             className="mySwiper thisFilm"
           >
             {myFilms.map((films) => {
+              // dan disni kita membuat validasi untuk merapihkan vote avarage pada film
               let vote = films.vote_average
                 .toLocaleString()
                 .split(".")
@@ -78,11 +83,14 @@ function Main1() {
             })}
           </Swiper>
         ) : isLoading && !isError ? (
+          // dan disni kamu membuat validasi jika ada loading
           <div className="containerLoaders">
             <div className="lds-dual-ring"></div>
           </div>
         ) : (
           isError && (
+            // dan disni kamu membuat validasi jika ada loading
+
             <>
               <div className="containerError">
                 <div className="imgError">
